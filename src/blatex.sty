@@ -1,0 +1,29 @@
+% Copyright (c) 2015 Niklas Koep
+%
+% This software may be modified and distributed under the terms of the MIT
+% license. See the LICENSE file for details.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{blatex}[2015/03/18 v0.1]
+
+% Include base packages.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fix-cm}
+\usepackage{microtype}
+
+% Include blatex packages.
+\usepackage{blaenv}
+% \usepackage{blaref}
+\usepackage{blamath}
+
+% Handle package options
+\DeclareOption{boldsymbols}{
+  \PassOptionsToPackage{\CurrentOption}{blamath}
+}
+
+\ProcessOptions\relax
+
+\endinput
+

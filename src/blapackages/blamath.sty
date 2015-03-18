@@ -1,0 +1,60 @@
+% Copyright (c) 2015 Niklas Koep
+%
+% This software may be modified and distributed under the terms of the MIT
+% license. See the LICENSE file for details.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{blamath}[2015/03/18 v0.1]
+
+\newif\if@boldsymbols\@boldsymbolsfalse
+\DeclareOption{boldsymbols}{
+  \@boldsymbolstrue
+}
+
+\ProcessOptions\relax
+
+\RequirePackage{amsmath}
+\RequirePackage{pgffor}
+
+% Define style of vectors and matrices.
+\if@boldsymbols
+  \newcommand\@makevector[1]{%
+    \expandafter\newcommand\csname v#1\endcsname{\boldsymbol{#1}}
+  }
+  \newcommand\@makematrix[1]{%
+    \expandafter\newcommand\csname m#1\endcsname{\boldsymbol{#1}}
+  }
+\else
+  \newcommand\@makevector[1]{%
+    \expandafter\newcommand\csname v#1\endcsname{#1}
+  }
+  \newcommand\@makematrix[1]{%
+    \expandafter\newcommand\csname m#1\endcsname{#1}
+  }
+\fi
+
+% Vectors
+\def\@makevector#1{%
+  \expandafter\def\csname v#1\endcsname{\mathbf{#1}}%
+}
+\def\@makevectors#1{%
+  \ifx#1\@makevectors\else\@makevector#1\expandafter\@makevectors\fi%
+}
+\@makevectors abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\@makevectors
+
+% \foreach \@symbol in {a,...,z}{
+%     \expandafter\@makevector\expandafter{\@symbol}
+% }
+% \@makevector{a}
+% \@makevector{b}
+% \@makevector{c}
+% \@makevector{x}
+% \@makevector{y}
+
+% Matrices
+\@makematrix{A}
+\@makematrix{B}
+\@makematrix{C}
+
+\endinput
+
