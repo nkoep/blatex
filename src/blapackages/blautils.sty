@@ -1,0 +1,42 @@
+% Copyright (c) 2015 Niklas Koep
+%
+% This software may be modified and distributed under the terms of the MIT
+% license. See the LICENSE file for details.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{blautils}[2015/03/18 v0.1]
+
+\ProcessOptions\relax
+
+% Lettrine (first letter of a word spans multiple rows)
+\usepackage{lettrine}
+\newcommand*{\Lettrine}[1]{
+  \StrLeft{#1}{1}[\head]
+  \StrGobbleLeft{#1}{1}[\tail]
+  \lettrine[lines=2]{\head}{\tail}
+}
+
+% Algorithm listings
+\usepackage{algpseudocode} % Pseudo code
+\usepackage{algorithm}
+\algnewcommand{\Initialize}[1]{
+  \State\textbf{Initialization:}
+  \Statex\hspace*{\algorithmicindent}\parbox[t]{0.8\linewidth}{\raggedright #1}
+}
+
+\usepackage{xspace}
+\newcommand*{\eg}{e.\,g.\xspace}
+\newcommand*{\ie}{i.\,e.\xspace}
+\newcommand*{\st}{s.\,t.\xspace}
+\newcommand*{\Wlog}{w.\,l.\,.o.\,g.\xspace}
+\newcommand*{\wrt}{w.\,r.\,t.\xspace}
+\newcommand*{\cf}{cf.\xspace}
+\newcommand*{\Iff}{iff}
+\newcommand*{\const}{\mathrm{const.}}
+
+% Define comma and period operator for use in display-style equations.
+\newcommand*{\comma}{\,,}
+\newcommand*{\period}{\,.}
+
+\endinput
+

@@ -1,0 +1,45 @@
+% Copyright (c) 2015 Niklas Koep
+%
+% This software may be modified and distributed under the terms of the MIT
+% license. See the LICENSE file for details.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{blatikz}[2015/03/18 v0.1]
+
+\ProcessOptions\relax
+
+% Configure TikZ
+\usepackage{pgfplots}      % Tikz and pgfplots
+\pgfplotsset{compat=newest}
+\usetikzlibrary{calc}      % Coordinate transforms
+\usetikzlibrary{matrix}    % Block alignment
+\usetikzlibrary{arrows}    % Arrow heads
+\usetikzlibrary{fit}       % Fit library for drawing bounding boxes
+\usetikzlibrary{positioning} % Node positioning
+\usetikzlibrary{decorations.markings}
+% Enable document externalization.
+\usetikzlibrary{external}
+\tikzsetexternalprefix{tikzfigures/.tikztmpfigures/}
+\tikzexternalize
+% Produce temporary pdf and ps files from tikz graphics.
+\tikzset{
+  external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error
+  -interaction=batchmode -jobname "\image" "\texsource";
+  pdf2ps "\image".pdf "\image".ps}
+}
+
+% Style definitions
+\tikzstyle{signal} = [coordinate]
+\tikzstyle{phantom} = [coordinate]
+\tikzstyle{block} = [draw, rectangle, thick, minimum height=2em,
+                     minimum width=2em, align=center]
+\tikzstyle{boundingblock} = [block, inner sep=0, dashed]
+\tikzstyle{op} = [draw, circle, inner sep=0, thick]
+\tikzstyle{arrow} = [->, thick]
+\tikzstyle{fatarrow} = [thick, -implies, double, double distance=1.0mm]
+\tikzstyle{line} = [thick]
+\tikzstyle{branch} = [circle, inner sep=0, minimum size=1mm, fill=black,
+                      draw=black]
+
+\endinput
+

@@ -1,0 +1,23 @@
+% Copyright (c) 2015 Niklas Koep
+%
+% This software may be modified and distributed under the terms of the MIT
+% license. See the LICENSE file for details.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{blaref}[2015/03/18 v0.1]
+
+\newcommand*{\refeqn}[1]{Equation~\eqref{#1}}
+\newcommand*{\refprob}[1]{Problem~(\ref{#1})}
+\newcommand*{\reffig}[1]{\figurename~\ref{#1}}
+\newcommand*{\reffigsub}[1]{(\subref{#1})}
+\newcommand*{\reftab}[1]{\tablename~\ref{#1}}
+\newcommand*{\refchap}[1]{\chaptername~\ref{#1}}
+\newcommand*{\refsec}[1]{Section~\ref{#1}}
+\newcommand*{\refapp}[1]{\appendixname~\ref{#1}}
+\newcommand*{\refalg}[1]{Algorithm~\ref{#1}}
+\newcommand*{\refthm}[1]{Theorem~\ref{#1}}
+
+\ProcessOptions\relax
+
+\endinput
+

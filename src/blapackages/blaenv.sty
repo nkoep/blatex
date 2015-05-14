@@ -4,14 +4,55 @@
 % license. See the LICENSE file for details.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{blamath}[2015/03/18 v0.1]
+\ProvidesPackage{blaenv}[2015/03/18 v0.1]
 
 \ProcessOptions\relax
 
-\RequirePackage{xparse}
+% AMS theorem configuration
+\usepackage{amsthm}
+\newtheoremstyle{dotless}{}{}{}{}{\bfseries}{}{ }{}
+\theoremstyle{dotless}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{properties}{Properties}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+% TODO: Add remark environment.
 
-\DeclareDocumentCommand{\E}{m o m}{%
-  \begin{#1}\IfNoValueF{[#2]}#3\end{#1}%
+% Generic environments
+% \DeclareDocumentCommand{\Env}{s m m}{%
+%   \IfBooleanTF{#1}{\def\blaenv@env{#2*}}{\def\blaenv@env{#2}}%
+%   \begin{\blaenv@env}#3\end{\blaenv@env}%
+% }
+\newcommand{\Env}[2]{\begin{#1}#2\end{#1}}
+
+% AMS theorem environments
+% TODO: Can we abstract this properly to re-use for other amsthm environments?
+\DeclareDocumentCommand{\Thmn}{m o +m}{%
+  \IfValueTF
+    {#2}
+    {\begin{#1}[#2]#3\end{#1}}
+    {\begin{#1}#3\end{#1}}
+}
+\newcommand{\Thm}[2]{\begin{#1}#2\end{#1}}
+
+% Convenience macros for theorem environments
+\newcommand{\Definition}[1]{\Thm{definition}{#1}}
+\newcommand{\Proposition}[1]{\Thm{proposition}{#1}}
+\newcommand{\Example}[1]{\Thm{example}{#1}}
+\newcommand{\Corollary}[1]{\Thm{corollary}{#1}}
+\newcommand{\Lemma}[1]{\Thm{lemma}{#1}}
+\newcommand{\Theorem}[1]{\Thm{theorem}{#1}}
+% \newcommand{\Proof}[1]{\Thm{proof}{#1}}
+
+\DeclareDocumentCommand{\Proof}{o +m}{%
+  \IfValueTF{#1}{%
+    \begin{proof}[#1]#2\end{proof}
+  }{%
+    \begin{proof}#2\end{proof}%
+  }
 }
 
 \endinput

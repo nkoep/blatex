@@ -12,14 +12,33 @@
 \usepackage{lmodern}
 \usepackage{fix-cm}
 \usepackage{microtype}
-
+% String manipulation
 \usepackage{xstring}
+% Convenience macros for command definitions
 \usepackage{xparse}
 
-% Include blatex packages.
+% Include blatex packages
 \usepackage{blaenv}
-% \usepackage{blaref}
+\usepackage{blaref}
 \usepackage{blamath}
+\usepackage{blatikz}
+\usepackage{blaglossary}
+\usepackage{blautils}
+% \usepackage{bladebug}
+
+% TODO: Move this to bladebug.sty and add a packet option.
+% % Source position listing in the margin
+% \usepackage[excludeor]{everyhook}
+% \usepackage{marginnote}
+% \newif\ifnotmarginhook
+% \notmarginhooktrue
+% \PushPostHook{par}{%
+%   \ifnotmarginhook
+%     \notmarginhookfalse
+%     \marginnote{\small\ttfamily\the\inputlineno}
+%     \notmarginhooktrue
+%   \fi
+% }
 
 % Handle package options
 \DeclareOption{boldmath}{

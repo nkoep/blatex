@@ -6,6 +6,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blamath}[2015/03/18 v0.1]
 
+\RequirePackage{blaenv}
+
 \newif\if@boldmath\@boldmathfalse
 \DeclareOption{boldmath}{
   \@boldmathtrue
@@ -13,7 +15,7 @@
 
 \ProcessOptions\relax
 
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb}
 \usepackage{xparse}
 \usepackage{pgffor}
 
@@ -23,6 +25,8 @@
 }
 % Positive integers
 \@defineset{N}
+% Nonnegative integers
+\newcommand*{\NN}{\mathbb{N}_0}
 % Integers
 \@defineset{Z}
 % Rational numbers
@@ -35,7 +39,7 @@
 \@defineset{F}
 
 % -- Miscellaneous --
-% Upright infinitesimal sign, e.g., df/dx
+% Upright infinitesimal sign for things like df/dx, etc.
 \renewcommand*{\d}[1]{\mathrm{d}#1}
 
 % Define style of vectors and matrices.
@@ -57,6 +61,7 @@
   }%
 }
 
+% TODO: Define these in a loop.
 \@makesymbol{a}
 \@makesymbol{b}
 \@makesymbol{c}
@@ -65,8 +70,7 @@
 \@makesymbol{f}
 \@makesymbol{g}
 
-% -- Operators --
-\DeclareDocumentCommand{\@delimiters}{m}{\left(#1\right)}
+% -- Operators & functions --
 % Probability measure
 \renewcommand*{\P}{\operatorname{P}}
 % Expected value
@@ -75,6 +79,10 @@
 \DeclareMathOperator{\Var}{Var}
 % Covariance
 \DeclareMathOperator{\Cov}{Cov}
+% Entropy
+\DeclareMathOperator{\ent}{H}
+% Mutual information
+\newcommand*{\mi}[2]{\operatorname{I}\left(#1;#2\right)}
 % Rank
 \DeclareMathOperator{\rank}{rank}
 % Trace
@@ -85,6 +93,36 @@
 \newcommand*{\adj}[1]{#1^*}
 % Orthogonal complement
 \newcommand*{\ocomp}[1]{#1^\bot}
+% Real and imaginary part
+\renewcommand*{\Re}{\operatorname{Re}}
+\renewcommand*{\Im}{\operatorname{Im}}
+% Inner product
+\newcommand*{\inner}[2]{\left\langle#1,#2\right\rangle}
+% Diagonal matrix
+\newcommand*{\diag}[1]{\operatorname{diag}\left\{#1\right\}}
+% Cardinality of a set
+\newcommand*{\card}{\#}
+% Signum function
+\DeclareMathOperator{\sgn}{sgn}
+% Function domain
+\newcommand*{\dom}{\mathoperator{dom}}
+% argmin
+\newcommand{\argmin}[2]{\operatorname*{argmin}_{#1}\left\{#2\right\}}
+% argmax
+\newcommand{\argmax}[2]{\operatorname*{argmax}_{#1}\left\{#2\right\}}
+% arginf
+\newcommand{\arginf}[2]{\operatorname*{arginf}_{#1}\left\{#2\right\}}
+% argsup
+\newcommand{\argsup}[2]{\operatorname*{argsup}_{#1}\left\{#2\right\}}
+% Proximal operator
+\DeclareMathOperator{\prox}{prox}
+
+% Math environments
+\DeclareDocumentCommand{\Equation}{s m}{%
+  \IfBooleanTF{#1}{\Env{align*}{#2}}{\Env{align}{#2}}
+}
+\newcommand*{\Pmatrix}[1]{\Env{pmatrix}{#1}}
+\newcommand*{\Cases}[1]{\Env{cases}{#1}}
 
 \endinput
 
