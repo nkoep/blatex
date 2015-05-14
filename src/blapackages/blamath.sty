@@ -6,55 +6,85 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blamath}[2015/03/18 v0.1]
 
-\newif\if@boldsymbols\@boldsymbolsfalse
-\DeclareOption{boldsymbols}{
-  \@boldsymbolstrue
+\newif\if@boldmath\@boldmathfalse
+\DeclareOption{boldmath}{
+  \@boldmathtrue
 }
 
 \ProcessOptions\relax
 
-\RequirePackage{amsmath}
-\RequirePackage{pgffor}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xparse}
+\usepackage{pgffor}
+
+% -- Sets --
+\newcommand*{\@defineset}[1]{
+  \expandafter\newcommand\csname #1\endcsname{\mathbb{#1}}
+}
+% Positive integers
+\@defineset{N}
+% Integers
+\@defineset{Z}
+% Rational numbers
+\@defineset{Q}
+% Real numbers
+\@defineset{R}
+% Complex numbers
+\@defineset{C}
+% Some number field F
+\@defineset{F}
+
+% -- Miscellaneous --
+% Upright infinitesimal sign, e.g., df/dx
+\renewcommand*{\d}[1]{\mathrm{d}#1}
 
 % Define style of vectors and matrices.
-\if@boldsymbols
-  \newcommand\@makevector[1]{%
-    \expandafter\newcommand\csname v#1\endcsname{\boldsymbol{#1}}
-  }
-  \newcommand\@makematrix[1]{%
-    \expandafter\newcommand\csname m#1\endcsname{\boldsymbol{#1}}
-  }
+\if@boldmath
+  \def\@matrixvector #1{\boldsymbol{#1}}
 \else
-  \newcommand\@makevector[1]{%
-    \expandafter\newcommand\csname v#1\endcsname{#1}
-  }
-  \newcommand\@makematrix[1]{%
-    \expandafter\newcommand\csname m#1\endcsname{#1}
-  }
+  \def\@matrixvector #1{\relax#1}
 \fi
-
-% Vectors
-\def\@makevector#1{%
-  \expandafter\def\csname v#1\endcsname{\mathbf{#1}}%
+\newcommand*{\@makesymbol}[1]{%
+  % Define a vector.
+  \expandafter\newcommand\csname v#1\endcsname{\@matrixvector{#1}}%
+  % Define a matrix.
+  \expandafter\newcommand\csname m#1\endcsname{%
+    \@matrixvector{\MakeUppercase{#1}}%
+  }%
+  % Define a random vector.
+  \expandafter\newcommand\csname rv#1\endcsname{%
+    \@matrixvector{\MakeUppercase{#1}}%
+  }%
 }
-\def\@makevectors#1{%
-  \ifx#1\@makevectors\else\@makevector#1\expandafter\@makevectors\fi%
-}
-\@makevectors abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\@makevectors
 
-% \foreach \@symbol in {a,...,z}{
-%     \expandafter\@makevector\expandafter{\@symbol}
-% }
-% \@makevector{a}
-% \@makevector{b}
-% \@makevector{c}
-% \@makevector{x}
-% \@makevector{y}
+\@makesymbol{a}
+\@makesymbol{b}
+\@makesymbol{c}
+\@makesymbol{d}
+\@makesymbol{e}
+\@makesymbol{f}
+\@makesymbol{g}
 
-% Matrices
-\@makematrix{A}
-\@makematrix{B}
-\@makematrix{C}
+% -- Operators --
+\DeclareDocumentCommand{\@delimiters}{m}{\left(#1\right)}
+% Probability measure
+\renewcommand*{\P}{\operatorname{P}}
+% Expected value
+\newcommand*{\E}{\mathrm{E}}
+% Variance
+\DeclareMathOperator{\Var}{Var}
+% Covariance
+\DeclareMathOperator{\Cov}{Cov}
+% Rank
+\DeclareMathOperator{\rank}{rank}
+% Trace
+\DeclareMathOperator{\tr}{tr}
+% Transpose
+\newcommand*{\transp}[1]{#1^\top}
+% Adjoint
+\newcommand*{\adj}[1]{#1^*}
+% Orthogonal complement
+\newcommand*{\ocomp}[1]{#1^\bot}
 
 \endinput
 

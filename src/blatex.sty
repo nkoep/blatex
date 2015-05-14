@@ -13,13 +13,16 @@
 \usepackage{fix-cm}
 \usepackage{microtype}
 
+\usepackage{xstring}
+\usepackage{xparse}
+
 % Include blatex packages.
 \usepackage{blaenv}
 % \usepackage{blaref}
 \usepackage{blamath}
 
 % Handle package options
-\DeclareOption{boldsymbols}{
+\DeclareOption{boldmath}{
   \PassOptionsToPackage{\CurrentOption}{blamath}
 }
 
