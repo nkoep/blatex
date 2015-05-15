@@ -44,31 +44,34 @@
 
 % Define style of vectors and matrices.
 \if@boldmath
-  \def\@matrixvector #1{\boldsymbol{#1}}
+  \def\@symbolstyle #1{\boldsymbol{#1}}
 \else
-  \def\@matrixvector #1{\relax#1}
+  \def\@symbolstyle #1{\relax#1}
 \fi
-\newcommand*{\@makesymbol}[1]{%
-  % Define a vector.
-  \expandafter\newcommand\csname v#1\endcsname{\@matrixvector{#1}}%
-  % Define a matrix.
-  \expandafter\newcommand\csname m#1\endcsname{%
-    \@matrixvector{\MakeUppercase{#1}}%
-  }%
-  % Define a random vector.
-  \expandafter\newcommand\csname rv#1\endcsname{%
-    \@matrixvector{\MakeUppercase{#1}}%
-  }%
+% Typeset a symbol as (v)ector or (m)atrix.
+\newcommand*{\vm}[1]{\@symbolstyle{#1}}
+% Define a range of symbols.
+\newcommand*{\@definesymbols}[1]{
+  \foreach \s in {#1}{
+    \expandafter\xdef\csname vm\s\endcsname{\noexpand\vm{\s}}
+  }
 }
-
-% TODO: Define these in a loop.
-\@makesymbol{a}
-\@makesymbol{b}
-\@makesymbol{c}
-\@makesymbol{d}
-\@makesymbol{e}
-\@makesymbol{f}
-\@makesymbol{g}
+% Define a range of symbols, but treat arguments as macros (e.g., \alpha rather
+% than alpha).
+\newcommand*{\@xdefinesymbols}[1]{
+  \foreach \s in {#1}{
+    \expandafter\xdef\csname vm\s\endcsname{\noexpand\vm{\csname \s\endcsname}}
+  }
+}
+\@definesymbols{a,...,z}
+\@definesymbols{A,...,Z}
+\@xdefinesymbols{
+  alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,
+  lambda,mu,nu,xi,o,pi,rho,varrho,sigma,tau,upsilon,phi,varphi,chi,psi,omega
+}
+\@xdefinesymbols{
+  Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega
+}
 
 % -- Operators & functions --
 % Probability measure
@@ -76,9 +79,9 @@
 % Expected value
 \newcommand*{\E}{\mathrm{E}}
 % Variance
-\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\var}{Var}
 % Covariance
-\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\cov}{Cov}
 % Entropy
 \DeclareMathOperator{\ent}{H}
 % Mutual information
@@ -107,13 +110,13 @@
 % Function domain
 \newcommand*{\dom}{\mathoperator{dom}}
 % argmin
-\newcommand{\argmin}[2]{\operatorname*{argmin}_{#1}\left\{#2\right\}}
+\newcommand*{\argmin}[2]{\operatorname*{argmin}_{#1}\left\{#2\right\}}
 % argmax
-\newcommand{\argmax}[2]{\operatorname*{argmax}_{#1}\left\{#2\right\}}
+\newcommand*{\argmax}[2]{\operatorname*{argmax}_{#1}\left\{#2\right\}}
 % arginf
-\newcommand{\arginf}[2]{\operatorname*{arginf}_{#1}\left\{#2\right\}}
+\newcommand*{\arginf}[2]{\operatorname*{arginf}_{#1}\left\{#2\right\}}
 % argsup
-\newcommand{\argsup}[2]{\operatorname*{argsup}_{#1}\left\{#2\right\}}
+\newcommand*{\argsup}[2]{\operatorname*{argsup}_{#1}\left\{#2\right\}}
 % Proximal operator
 \DeclareMathOperator{\prox}{prox}
 
@@ -121,7 +124,7 @@
 \DeclareDocumentCommand{\Equation}{s m}{%
   \IfBooleanTF{#1}{\Env{align*}{#2}}{\Env{align}{#2}}
 }
-\newcommand*{\Pmatrix}[1]{\Env{pmatrix}{#1}}
+\newcommand*{\Matrix}[1]{\Env{pmatrix}{#1}}
 \newcommand*{\Cases}[1]{\Env{cases}{#1}}
 
 \endinput
