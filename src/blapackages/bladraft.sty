@@ -3,34 +3,44 @@
 % This software may be modified and distributed under the terms of the MIT
 % license. See the LICENSE file for details.
 
+% TODO: Move this to blautil.
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{bladraft}[2015/03/18 v0.1]
 
-\newif\if@lineno\@linenofalse
-\DeclareOption{lineno}{
-  \@linenotrue
+\usepackage[pagewise,switch*]{lineno}
+\usepackage[excludeor]{everyhook}
+\usepackage{marginnote}
+\usepackage{setspace}
+
+\newif\if@review\@reviewfalse
+\DeclareOption{review}{
+  \@reviewtrue
 }
+
+\newif\if@source\@sourcefalse
+\DeclareOption{source}{
+  \@sourcetrue
+}
+\newif\if@marginhook\@marginhookfalse
 
 \ProcessOptions\relax
 
-% TODO
-% % Source position listing in the margin
-% \usepackage[excludeor]{everyhook}
-% \usepackage{marginnote}
-% \newif\ifnotmarginhook
-% \notmarginhooktrue
-% \PushPostHook{par}{%
-%   \ifnotmarginhook
-%     \notmarginhookfalse
-%     \marginnote{\small\ttfamily\the\inputlineno}
-%     \notmarginhooktrue
-%   \fi
-% }
-
-% FIXME: This fails to compile if we don't pass the lineno option.
-\if@lineno
-  \usepackage[pagewise,switch]{lineno}
+\if@review
+  \doublespacing
   \linenumbers
+\fi
+
+\if@source
+  \PushPostHook{par}{
+    \if@marginhook
+      \relax
+    \else
+      \@marginhooktrue
+      \marginnote{\small\ttfamily\the\inputlineno}
+      \@marginhookfalse
+    \fi
+  }
 \fi
 
 \endinput
