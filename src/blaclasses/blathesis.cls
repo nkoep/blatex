@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{phdthesis}[2014/05/17]
+\ProvidesClass{blathesis}[2014/05/17]
 
 \ProcessOptions\relax
 
