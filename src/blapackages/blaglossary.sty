@@ -6,14 +6,23 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blaglossary}[2015/03/18 v0.1]
 
+\newif\if@draft\@draftfalse
+\DeclareOption{draft}{
+  \@drafttrue
+}
+
 \ProcessOptions\relax
 
-\usepackage{acronym}
-% \usepackage[printonlyused,withpage]{acronym}
+\if@draft
+  \usepackage{acronym}
+\else
+  \usepackage[printonlyused,withpage]{acronym}
+\fi
 \renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
+\usepackage{tabularx}
 
 % List of symbols
-% TODO
+% TODO: Generate this table automatically.
 \newcommand*{\listofsymbols}{
   \chapter{List of Symbols}
   \begin{tabularx}{\linewidth}{p{3em}X}

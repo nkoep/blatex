@@ -41,6 +41,10 @@
 % }
 
 % Handle package options
+\DeclareOption{draft}{
+  \PassOptionsToPackage{\CurrentOption}{blaglossary}
+}
+
 \DeclareOption{boldmath}{
   \PassOptionsToPackage{\CurrentOption}{blamath}
 }
