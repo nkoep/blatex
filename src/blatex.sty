@@ -24,25 +24,15 @@
 \usepackage{blatikz}
 \usepackage{blaglossary}
 \usepackage{blautils}
-% \usepackage{bladebug}
-
-% TODO: Move this to bladebug.sty and add a packet option.
-% % Source position listing in the margin
-% \usepackage[excludeor]{everyhook}
-% \usepackage{marginnote}
-% \newif\ifnotmarginhook
-% \notmarginhooktrue
-% \PushPostHook{par}{%
-%   \ifnotmarginhook
-%     \notmarginhookfalse
-%     \marginnote{\small\ttfamily\the\inputlineno}
-%     \notmarginhooktrue
-%   \fi
-% }
+\usepackage{bladraft}
 
 % Handle package options
 \DeclareOption{draft}{
   \PassOptionsToPackage{\CurrentOption}{blaglossary}
+}
+
+\DeclareOption{lineno}{
+  \PassOptionsToPackage{\CurrentOption}{bladraft}
 }
 
 \DeclareOption{boldmath}{
