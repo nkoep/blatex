@@ -40,11 +40,15 @@
 
 % Configure the hyperref package
 \usepackage[usenames,dvipsnames]{xcolor}
+\def\@linkcolor{NavyBlue}
 \usepackage[
   final,
   linktocpage=true,
   colorlinks=true,
-  linkcolor=NavyBlue
+  linkcolor=\@linkcolor,
+  citecolor=\@linkcolor,
+  filecolor=\@linkcolor,
+  urlcolor=\@linkcolor
 ]{hyperref}
 
 % Start chapters on odd pages and make sure the preceeding page is empty.
