@@ -6,26 +6,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blatex}[2015/03/18 v0.1]
 
-% Include base packages.
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{fix-cm}
-\usepackage{microtype}
-% String manipulation
-\usepackage{xstring}
-% Convenience macros for command definitions
-\usepackage{xparse}
-
-% Include blatex packages
-\usepackage{blaenv}
-\usepackage{blaref}
-\usepackage{blamath}
-\usepackage{blatikz}
-\usepackage{blaglossary}
-\usepackage{blautils}
-\usepackage{bladraft}
-
 % Handle package options
 \DeclareOption{draft}{
   \PassOptionsToPackage{\CurrentOption}{blaglossary}
@@ -44,6 +24,26 @@
 }
 
 \ProcessOptions\relax
+
+% Include base packages.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fix-cm}
+\usepackage{microtype}
+% String manipulation
+\usepackage{xstring}
+% Convenience macros for command definitions
+\usepackage{xparse}
+
+% Include blatex packages
+\RequirePackage{blaenv}
+\RequirePackage{blaref}
+\RequirePackage{blamath}
+\RequirePackage{blatikz}
+\RequirePackage{blaglossary}
+\RequirePackage{blautils}
+\RequirePackage{bladraft}
 
 \endinput
 

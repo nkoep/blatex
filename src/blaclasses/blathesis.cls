@@ -42,7 +42,7 @@
 }{6ex}{\titlerule\vspace{1.5ex}\filcenter}[\vspace{1.5ex}\titlerule]
 \titleformat{\section}{\bfseries\Large}{\thesection}{1em}{}
 
-% Configure the hyperref package
+% Configure the hyperref package.
 \usepackage[usenames,dvipsnames]{xcolor}
 \def\@linkcolor{NavyBlue}
 \usepackage[
@@ -56,11 +56,11 @@
 ]{hyperref}
 
 % Start chapters on odd pages and make sure the preceeding page is empty.
-\let\@origdoublepage\cleardoublepage
+\let\@cleardoublepage\cleardoublepage
 \newcommand*{\clearemptydoublepage}{%
   \clearpage{%
     \pagestyle{empty}%
-    \@origdoublepage%
+    \@cleardoublepage%
   }%
 }
 \def\chapter{%
@@ -70,6 +70,8 @@
   \@afterindentfalse        % Suppresses indent in first paragraph.  Change
   \secdef\@chapter\@schapter% to \@afterindenttrue to have indent.
 }
+
+\RequirePackage{blatex}
 
 \endinput
 
