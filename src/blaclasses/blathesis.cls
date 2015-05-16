@@ -1,6 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{blathesis}[2014/05/17]
 
+\DeclareOption*{
+  \PassOptionsToPackage{\CurrentOption}{blatex}
+}
+
 \ProcessOptions\relax
 
 \LoadClass[12pt,a4paper,twoside]{book}
