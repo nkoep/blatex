@@ -44,32 +44,28 @@
 
 % Define style of vectors and matrices.
 \if@boldmath
-  \def\@symbolstyle #1{\boldsymbol{#1}}
+  \def\@symbolstyle#1{\boldsymbol{#1}}
 \else
-  \def\@symbolstyle #1{\relax#1}
+  \def\@symbolstyle#1{\relax#1}
 \fi
 % Typeset a symbol as (v)ector or (m)atrix.
 \newcommand*{\vm}[1]{\@symbolstyle{#1}}
-% Define a range of symbols.
-\newcommand*{\@definesymbols}[1]{
-  \foreach \s in {#1}{
-    \expandafter\xdef\csname vm\s\endcsname{\noexpand\vm{\s}}
-  }
-}
-% Define a range of symbols, but treat arguments as macros (e.g., \alpha rather
-% than alpha).
-\newcommand*{\@xdefinesymbols}[1]{
-  \foreach \s in {#1}{
-    \expandafter\xdef\csname vm\s\endcsname{\noexpand\vm{\csname \s\endcsname}}
+% Define a symbol range. The starred variant treats the symbol names as macros
+% upon expansion, e.g., \vm{\sigma} rather than \vm{sigma}.
+\DeclareDocumentCommand{\@definesymbols}{s m}{
+  \foreach \s in {#2}{
+    \expandafter\xdef\csname vm\s\endcsname{
+      \noexpand\vm{\IfBooleanTF{#1}{\csname\s\endcsname}{\s}}
+    }
   }
 }
 \@definesymbols{a,...,z}
 \@definesymbols{A,...,Z}
-\@xdefinesymbols{
+\@definesymbols*{
   alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,
   lambda,mu,nu,xi,o,pi,rho,varrho,sigma,tau,upsilon,phi,varphi,chi,psi,omega
 }
-\@xdefinesymbols{
+\@definesymbols*{
   Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega
 }
 
