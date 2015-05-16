@@ -12,13 +12,19 @@
 \usepackage{amsthm}
 \newtheoremstyle{blathm}{}{}{}{}{\bfseries}{}{ }{}
 \theoremstyle{blathm}
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{proposition}{Proposition}[chapter]
-\newtheorem{properties}{Properties}[chapter]
-\newtheorem{example}{Example}[chapter]
-\newtheorem{corollary}{Corollary}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{theorem}{Theorem}[chapter]
+\ifx\thechapter\undefined
+  \def\@basecounter{section}
+\else
+  \def\@basecounter{chapter}
+\fi
+
+\newtheorem{definition}{Definition}[\@basecounter]
+\newtheorem{proposition}{Proposition}[\@basecounter]
+\newtheorem{properties}{Properties}[\@basecounter]
+\newtheorem{example}{Example}[\@basecounter]
+\newtheorem{corollary}{Corollary}[\@basecounter]
+\newtheorem{lemma}{Lemma}[\@basecounter]
+\newtheorem{theorem}{Theorem}[\@basecounter]
 % TODO: Add remark environment.
 
 % Generic environments
