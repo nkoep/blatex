@@ -17,7 +17,6 @@
 \else
   \def\@basecounter{chapter}
 \fi
-
 \newtheorem{definition}{Definition}[\@basecounter]
 \newtheorem{proposition}{Proposition}[\@basecounter]
 \newtheorem{properties}{Properties}[\@basecounter]
@@ -25,7 +24,8 @@
 \newtheorem{corollary}{Corollary}[\@basecounter]
 \newtheorem{lemma}{Lemma}[\@basecounter]
 \newtheorem{theorem}{Theorem}[\@basecounter]
-% TODO: Add remark environment.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[\@basecounter]
 
 % Generic environments
 % \DeclareDocumentCommand{\Env}{s m m}{%
@@ -51,6 +51,7 @@
 \newcommand{\Corollary}[1]{\Thm{corollary}{#1}}
 \newcommand{\Lemma}[1]{\Thm{lemma}{#1}}
 \newcommand{\Theorem}[1]{\Thm{theorem}{#1}}
+\newcommand{\Remark}[1]{\Thm{remark}{#1}}
 % \newcommand{\Proof}[1]{\Thm{proof}{#1}}
 
 \DeclareDocumentCommand{\Proof}{o +m}{%
