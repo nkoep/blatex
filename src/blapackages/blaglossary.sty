@@ -19,19 +19,28 @@
   \usepackage[printonlyused,withpage]{acronym}
 \fi
 \renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
-\usepackage{tabularx}
 
 % List of symbols
-% TODO: Generate this table automatically.
+\usepackage{tabularx}
+
+\newtoks\@symboltokens
+% Add a new symbol definition
+\newcommand*{\addsymbol}[2]{
+  \@symboltokens=\expandafter{\the\@symboltokens #1 & #2 \\}
+}
+
+% Generate the list of symbols
+\newif\if@losdone\@losdonefalse
 \newcommand*{\listofsymbols}{
-  \chapter{List of Symbols}
-  \begin{tabularx}{\linewidth}{p{3em}X}
-    $s$ & Usually the number of nonzero entries of a vector to be recovered \\
-    $\Sigma_k$ & The set of $k$-sparse vectors of appropriate dimension \\
-    $x_S$ & Either the vector in $C$ equal to $x$ on $S$ and to zero on $S$ or the
-    vector in $C$ $S_w$ this is some bullshit \\
-    $[N]$ & The set $[1,N] \cap \mathbb{N}=\{1,2,\ldots,N\}$
-  \end{tabularx}
+  \if@losdone
+    \PackageError{blaglossary}{Can't generate the List of Symbols twice}{}
+  \else
+    \chapter{List of Symbols}
+    \begin{tabularx}{\linewidth}{p{3em}X}
+      \the\@symboltokens
+    \end{tabularx}
+    \@losdonetrue
+  \fi
 }
 
 \endinput
