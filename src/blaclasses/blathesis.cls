@@ -71,6 +71,20 @@
   \secdef\@chapter\@schapter% to \@afterindenttrue to have indent.
 }
 
+% Redefine the \listoftables macro so that it adds a TOC entry as well
+\let\@listoftables\listoftables
+\renewcommand{\listoftables}{%
+  \@listoftables%
+  \addcontentsline{toc}{chapter}{\listtablename}%
+}
+
+% Redefine the \listoffigures macro so that it adds a TOC entry as well
+\let\@listoffigures\listoffigures
+\renewcommand{\listoffigures}{%
+  \@listoffigures%
+  \addcontentsline{toc}{chapter}{\listfigurename}%
+}
+
 \RequirePackage{blatex}
 
 \endinput
