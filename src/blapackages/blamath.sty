@@ -38,12 +38,6 @@
 % Some number field F
 \@defineset{F}
 
-% -- Miscellaneous --
-% Upright infinitesimal sign for things like df/dx, etc.
-\renewcommand*{\d}[1]{\mathrm{d}#1}
-% Redefine iff to use \Leftrightarrow
-\renewcommand*{\iff}{\Leftrightarrow}
-
 % Define style of vectors and matrices.
 \if@boldmath
   \def\@symbolstyle#1{\boldsymbol{#1}}
@@ -71,6 +65,11 @@
   Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega
 }
 
+% -- Parenthesis, brackets and braces --
+\newcommand*{\parens}[1]{\left(#1\right)}
+\newcommand*{\brackets}[1]{\left[#1\right]}
+\newcommand*{\braces}[1]{\left\{#1\right\}}
+
 % -- Operators & functions --
 % Probability measure
 \renewcommand*{\P}{\operatorname{P}}
@@ -94,13 +93,15 @@
 \newcommand*{\adj}[1]{#1^*}
 % Orthogonal complement
 \newcommand*{\ocomp}[1]{#1^\bot}
+% Optimal point
+\newcommand*{\opt}[1]{#1^\star}
 % Real and imaginary part
 \renewcommand*{\Re}{\operatorname{Re}}
 \renewcommand*{\Im}{\operatorname{Im}}
 % Inner product
 \newcommand*{\inner}[2]{\left\langle#1,#2\right\rangle}
 % Diagonal matrix
-\newcommand*{\diag}[1]{\operatorname{diag}\left\{#1\right\}}
+\newcommand*{\diag}[1]{\operatorname{diag}\braces{#1}}
 % Cardinality of a set
 \newcommand*{\card}{\#}
 % Signum function
@@ -108,13 +109,13 @@
 % Function domain
 \newcommand*{\dom}{\mathoperator{dom}}
 % argmin
-\newcommand*{\argmin}[2]{\operatorname*{argmin}_{#1}\left\{#2\right\}}
+\newcommand*{\argmin}[2]{\operatorname*{argmin}_{#1}\braces{#2}}
 % argmax
-\newcommand*{\argmax}[2]{\operatorname*{argmax}_{#1}\left\{#2\right\}}
+\newcommand*{\argmax}[2]{\operatorname*{argmax}_{#1}\braces{#2}}
 % arginf
-\newcommand*{\arginf}[2]{\operatorname*{arginf}_{#1}\left\{#2\right\}}
+\newcommand*{\arginf}[2]{\operatorname*{arginf}_{#1}\braces{#2}}
 % argsup
-\newcommand*{\argsup}[2]{\operatorname*{argsup}_{#1}\left\{#2\right\}}
+\newcommand*{\argsup}[2]{\operatorname*{argsup}_{#1}\braces{#2}}
 % Proximal operator
 \DeclareMathOperator{\prox}{prox}
 
@@ -124,6 +125,12 @@
 }
 \newcommand*{\VM}[1]{\Env{pmatrix}{#1}}
 \newcommand*{\Cases}[1]{\Env{cases}{#1}}
+
+% -- Miscellaneous --
+% Upright infinitesimal sign for things like df/dx, etc.
+\renewcommand*{\d}[1]{\mathrm{d}#1}
+% Redefine \iff to use \Leftrightarrow in place of \Longleftrightarrow.
+\renewcommand*{\iff}{\Leftrightarrow}
 
 \endinput
 
