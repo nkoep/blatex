@@ -36,9 +36,8 @@
 }
 
 \usepackage{titlesec}
-% TODO: Use em units rather than ex.
 \titleformat{\chapter}[display]{\bfseries\LARGE}{%
-  \filcenter\fontsize{125}{1}\selectfont\thechapter
+  \filcenter\fontsize{125}{1}\selectfont\thechapter%
 }{6ex}{\titlerule\vspace{1.5ex}\filcenter}[\vspace{1.5ex}\titlerule]
 \titleformat{\section}{\bfseries\Large}{\thesection}{1em}{}
 
@@ -73,16 +72,25 @@
 
 % Redefine the \listoftables macro so that it adds a TOC entry as well
 \let\@listoftables\listoftables
-\renewcommand{\listoftables}{%
-  \@listoftables%
-  \addcontentsline{toc}{chapter}{\listtablename}%
+\renewcommand{\listoftables}{
+  \@listoftables
+  \addcontentsline{toc}{chapter}{\listtablename}
 }
 
 % Redefine the \listoffigures macro so that it adds a TOC entry as well
 \let\@listoffigures\listoffigures
-\renewcommand{\listoffigures}{%
-  \@listoffigures%
-  \addcontentsline{toc}{chapter}{\listfigurename}%
+\renewcommand{\listoffigures}{
+  \@listoffigures
+  \addcontentsline{toc}{chapter}{\listfigurename}
+}
+
+% Configure the bibliography style
+\bibliographystyle{alpha}
+\let\@bibliography\bibliography
+\renewcommand{\bibliography}[1]{
+  \renewcommand{\bibname}{References}
+  \@bibliography{#1}
+  \addcontentsline{toc}{chapter}{References}
 }
 
 \RequirePackage{blatex}
