@@ -19,8 +19,12 @@
 
 % Page layout
 \usepackage[
-  left=2.9cm,
-  right=4cm,
+  % left=2.9cm,
+  % right=4cm,
+  left=3.45cm,
+  right=3.45cm,
+  % left=3cm,
+  % right=3cm,
   top=3.2cm,headsep=0.5cm,
   bottom=5cm,footskip=1.5cm
 ]{geometry}
