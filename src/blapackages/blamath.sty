@@ -37,6 +37,12 @@
 \@defineset{C}
 % Some number field F
 \@defineset{F}
+% N-sphere
+\newcommand*{\sphere}[1]{\mathcal{S}^{#1}}
+% Set builder
+\DeclareDocumentCommand{\set}{m o}{%
+  \IfValueTF{#2}{\braces{#1 : #2}}{\braces{#1}}%
+}
 
 % Define style of vectors and matrices.
 \if@boldmath
@@ -64,6 +70,8 @@
 \@definesymbols*{
   Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega
 }
+% Identity operator
+\newcommand*{\Id}{\vm{\mathrm{Id}}}
 
 % -- Parenthesis, brackets and braces --
 \newcommand*{\parens}[1]{\left(#1\right)}
@@ -71,6 +79,8 @@
 \newcommand*{\braces}[1]{\left\{#1\right\}}
 
 % -- Operators & functions --
+% Function definition
+\newcommand*{\function}[3]{#1 \colon #2 \to #3}
 % Probability measure
 \renewcommand*{\P}{\mathbb{P}}
 % Expected value
@@ -108,7 +118,7 @@
 \newcommand*{\card}{\#}
 % Signum function
 \DeclareMathOperator{\sgn}{sgn}
-% Function domain
+% Domain of a function
 \newcommand*{\dom}{\mathoperator{dom}}
 % argmin
 \newcommand*{\argmin}[2]{\operatorname*{argmin}_{#1}\braces{#2}}
@@ -120,6 +130,12 @@
 \newcommand*{\argsup}[2]{\operatorname*{argsup}_{#1}\braces{#2}}
 % Proximal operator
 \DeclareMathOperator{\prox}{prox}
+% Hard-thresholding operator
+\newcommand*{\hard}[1]{H_{#1}}
+% Soft-thresholding operator
+\newcommand*{\shrink}[1]{S_{#1}}
+% Indicator function
+\newcommand*{\indicator}[1]{\iota_{#1}}
 
 % Math environments
 \DeclareDocumentCommand{\Equation}{s m}{%
@@ -140,6 +156,12 @@
   \end{array}
 }
 
+\DeclareDocumentCommand{\ProblemSimple}{m o m m m}{%
+  \def\@padding{\;\;}
+  \IfValueTF{#2}{\operatorname*{#1}\limits_{#2}}{\operatorname{#1}} \@padding %
+  #3 \@padding \text{#4} \@padding #5
+}
+
 % -- Miscellaneous --
 % Upright infinitesimal sign for things like df/dx, etc.
 \renewcommand*{\d}[1]{\mathrm{d}#1}
@@ -148,5 +170,26 @@
 % Corresponds to
 \newcommand*{\correspondsto}{\mathrel{\widehat{=}}}
 
-\endinput
+% -- Differential geometry --
+% Manifolds
+\newcommand*{\man}[1]{\mathcal{#1}}
+\newcommand*{\manM}{\man{M}}
+\newcommand*{\manN}{\man{N}}
+% Directional derivative
+\DeclareDocumentCommand{\dderiv}{m o}{%
+  % Using \operatorname here adds unwanted whitespace after D.
+  % \mathrm{D}{#1}\IfValueT{#2}{[#2]}%
+  \mathrm{D}\IfValueT{#2}{_{#2}}{#1}%
+}
+% Riemannian gradient
+\newcommand*{\rgrad}{\operatorname{grad}}
+% Tangent space/bundle
+\DeclareDocumentCommand{\tspace}{o m}{%
+  T\IfValueT{#1}{_{#1}}#2%
+}
+% Retraction
+\newcommand*{\ret}{R}
+% Projection onto subspace
+\newcommand*{\proj}[1]{\Pi_{#1}}
 
+\endinput
