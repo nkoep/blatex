@@ -6,24 +6,73 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blaref}[2015/03/18 v0.1]
 
-\newcommand*{\refeqn}[1]{Equation~\eqref{#1}}
-\newcommand*{\refprob}[1]{Problem~(\ref{#1})}
-\newcommand*{\reffig}[1]{\figurename~\ref{#1}}
-\newcommand*{\reffigsub}[1]{(\subref{#1})}
-\newcommand*{\reftab}[1]{\tablename~\ref{#1}}
-\newcommand*{\refchap}[1]{\chaptername~\ref{#1}}
-\newcommand*{\refsec}[1]{Section~\ref{#1}}
-\newcommand*{\refapp}[1]{\appendixname~\ref{#1}}
-\newcommand*{\refalg}[1]{Algorithm~\ref{#1}}
+\RequirePackage{xstring}
+\RequirePackage{ifthen}
+\RequirePackage{hyperref}
 
-\newcommand*{\refdef}[1]{Definition~\ref{#1}}
-\newcommand*{\refprop}[1]{Proposition~\ref{#1}}
-\newcommand*{\refproperties}[1]{Properties~\ref{#1}}
-\newcommand*{\refex}[1]{Example~\ref{#1}}
-\newcommand*{\refcol}[1]{Corollary~\ref{#1}}
-\newcommand*{\reflem}[1]{Lemma~\ref{#1}}
-\newcommand*{\refthm}[1]{Theorem~\ref{#1}}
-\newcommand*{\refrem}[1]{Remark~\ref{#1}}
+% Internal macros
+\newcommand*{\blaref@ifempty}[3]{\ifthenelse{\equal{#1}{}}{#2}{#3}}
+
+\newcommand*{\blaref@blaref}[1]{%
+  \StrCut{#1}{/}{\blaref@basename}{\blaref@itemname}%
+  \blaref@ifempty{\blaref@itemname}{%
+    \text{\ref{#1}}%
+  }{%
+    % Use the starred version of \ref in the second argument to `hyperref`
+    % so the package doesn't create links to both the basename and the
+    % actual target.
+    \hyperref[#1]{\text{\ref*{\blaref@basename}\ref*{#1}}}%
+  }%
+}
+
+\def\blaref@eqnprefix{eqn}
+\newcommand{\setequationprefix}[1]{%
+  \def\blaref@eqnprefix{#1}%
+}
+
+% Exported macros
+\DeclareDocumentCommand{\blaref}{s o m}{%
+  \StrCut{#3}{:}{\blaref@domain}{\blaref@refname}%
+  \text{%
+    \IfBooleanF{#1}{%
+      \IfNoValueTF{#2}{%
+        \blaref@ifempty{\blaref@refname}{}{%
+          \ifcsname blaref@refname\blaref@domain\endcsname%
+            \csname blaref@refname\blaref@domain\endcsname%
+          \else%
+            \textbf{??}%
+          \fi~%
+        }%
+      }{#2~}%
+    }%
+    \IfStrEq{\blaref@domain}{\blaref@eqnprefix}{\eqref{#3}}{\blaref@blaref{#3}}%
+  }%
+}
+
+\newcommand*{\definereftype}[2]{%
+  \expandafter\def\csname blaref@refname#1\endcsname{#2}%
+}
+
+\definereftype{eqn}{Equation}
+\definereftype{fig}{\figurename}
+\definereftype{tab}{\tablename}
+\definereftype{chap}{\chaptername}
+\definereftype{sec}{Section}
+\definereftype{app}{\appendixname}
+\definereftype{alg}{Algorithm}
+
+\definereftype{def}{Definition}
+\definereftype{prop}{Proposition}
+\definereftype{ex}{Example}
+\definereftype{cor}{Corollary}
+\definereftype{lem}{Lemma}
+\definereftype{thm}{Theorem}
+\definereftype{rem}{Remark}
+
+% TODO: We need to account for references to optimization problems since we
+%       want.
+\newcommand*{\refprob}[1]{Problem~\eqref{#1}}
+\newcommand*{\reffigsub}[1]{(\subref{#1})}
 
 \ProcessOptions\relax
 
