@@ -93,6 +93,8 @@
 \DeclareMathOperator{\ent}{H}
 % Mutual information
 \newcommand*{\mi}[2]{\operatorname{I}\left(#1;#2\right)}
+% Norm
+\newcommand*{\norm}[1]{\left\|#1\right\|}
 % Rank
 \DeclareMathOperator{\rank}{rank}
 % Trace
@@ -120,14 +122,19 @@
 \DeclareMathOperator{\sgn}{sgn}
 % Domain of a function
 \newcommand*{\dom}{\mathoperator{dom}}
+% TODO: Declare all arg* variants this way.
 % argmin
-\newcommand*{\argmin}[2]{\operatorname*{argmin}_{#1}\braces{#2}}
+\DeclareDocumentCommand{\argmin}{s m m}{%
+  \operatorname*{argmin}_{#2}\IfBooleanTF{#1}{#3}{\braces{#3}}%
+}
 % argmax
 \newcommand*{\argmax}[2]{\operatorname*{argmax}_{#1}\braces{#2}}
 % arginf
 \newcommand*{\arginf}[2]{\operatorname*{arginf}_{#1}\braces{#2}}
 % argsup
 \newcommand*{\argsup}[2]{\operatorname*{argsup}_{#1}\braces{#2}}
+% Convex hull
+\DeclareMathOperator{\conv}{conv}
 % Proximal operator
 \newcommand*{\prox}[1]{\operatorname{prox}_{#1}}
 % Hard-thresholding operator
