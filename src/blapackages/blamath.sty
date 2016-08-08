@@ -159,21 +159,33 @@
 \newcommand*{\Cases}[1]{\Env{cases}{#1}}
 
 % Optimization problems
-\DeclareDocumentCommand{\Problem}{m o m m m}{%
-  \begin{array}{cl}
-    \IfValueTF{#2}{\operatorname*{#1}\limits_{#2}}{\operatorname{#1}} & #3 \\
-    \text{#4} &
-    \setlength\arraycolsep{0pt}
-    \begin{array}[t]{l}
-      #5
+%   #1: star (for single line problems)
+%   #2: min./max./minimize/maximize
+%   #3: domain (optional)
+%   #4: objective
+%   #5: s.t./subject to
+%   #6: constraints
+% TODO: Make #5 and #6 optional.
+\DeclareDocumentCommand{\Problem}{s m o m m m}{%
+  \def\@padding{\;\;}%
+  \IfBooleanTF{#1}{%
+    \IfValueTF{#3}{\operatorname*{#2}\limits_{#3}}{\operatorname{#2}}%
+    \@padding #4%
+    \IfValueT{#5}{%
+      \IfValueT{#6}{%
+        \@padding \text{#5} \@padding #6%
+      }%
+    }%
+  }{%
+    \begin{array}{cl}
+      \IfValueTF{#3}{\operatorname*{#2}\limits_{#3}}{\operatorname{#2}} & #4 \\
+      \text{#5} &
+      \setlength\arraycolsep{0pt}%
+      \begin{array}[t]{l}
+        #6
+      \end{array}
     \end{array}
-  \end{array}
-}
-
-\DeclareDocumentCommand{\ProblemSimple}{m o m m m}{%
-  \def\@padding{\;\;}
-  \IfValueTF{#2}{\operatorname*{#1}\limits_{#2}}{\operatorname{#1}} \@padding %
-  #3 \@padding \text{#4} \@padding #5
+  }
 }
 
 % -- Miscellaneous --
