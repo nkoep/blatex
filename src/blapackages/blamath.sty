@@ -73,7 +73,11 @@
 % Identity operator
 \newcommand*{\Id}{\vm{\mathrm{Id}}}
 % Vector of ones
-\newcommand*{\ones}{\mathds{1}}
+\newcommand*{\ones}{\boldsymbol{1}}
+% Indicator function
+\newcommand*{\indicator}[1]{\iota_{#1}}
+% Element-wise indicator function on {0,1}
+\newcommand*{\binarize}[1]{\mathds{1}_{\braces{#1}}}
 
 % -- Parenthesis, brackets and braces --
 \newcommand*{\parens}[1]{\left(#1\right)}
@@ -150,8 +154,6 @@
 \newcommand*{\hard}[1]{H_{#1}}
 % Soft-thresholding operator
 \newcommand*{\shrink}[1]{S_{#1}}
-% Indicator function
-\newcommand*{\indicator}[1]{\iota_{#1}}
 
 % Math environments
 \DeclareDocumentCommand{\Equation}{s m}{%
