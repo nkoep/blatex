@@ -3,8 +3,6 @@
 % This software may be modified and distributed under the terms of the MIT
 % license. See the LICENSE file for details.
 
-% TODO: Move this to blautil.
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{bladraft}[2015/03/18 v0.1]
 
@@ -42,5 +40,12 @@
     \fi
   }
 \fi
+
+\usepackage{todonotes}
+\newcommand{\blatodo}[1]{%
+  \tikzexternaldisable%
+  \todo[inline,color=green!40,size=\small]{\textbf{TODO:} #1}%
+  \tikzexternalenable%
+}
 
 \endinput
