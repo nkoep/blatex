@@ -171,7 +171,6 @@
 %   #4: objective
 %   #5: s.t./subject to
 %   #6: constraints
-% TODO: Make #5 and #6 optional.
 \DeclareDocumentCommand{\Problem}{s m o m m m}{%
   \def\@padding{\;\;}%
   \IfBooleanTF{#1}{%
@@ -184,7 +183,8 @@
     }%
   }{%
     \begin{array}{cl}
-      \IfValueTF{#3}{\operatorname*{#2}\limits_{#3}}{\operatorname{#2}} & #4 \\
+      \IfValueTF{#3}{\operatorname*{#2}\limits_{#3}}{\operatorname{#2}} &
+      \displaystyle #4 \\
       \text{#5} &
       \setlength\arraycolsep{0pt}%
       \begin{array}[t]{l}
