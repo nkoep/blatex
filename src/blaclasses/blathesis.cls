@@ -101,7 +101,19 @@
   \addcontentsline{toc}{chapter}{References}
 }
 
+% TODO: Finish the title page.
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \centering
+    \vspace{2.5cm}
+    {\Large\sffamily\@title\unskip\strut\par}
+    \vspace{5cm}
+    {\Large\@author\unskip\strut\par}
+    \vfill
+    {\large\@date\par}
+  \end{titlepage}
+}
+
 \RequirePackage{blatex}
 
 \endinput
-
