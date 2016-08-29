@@ -17,12 +17,12 @@
 }
 
 % Algorithm listings
-\usepackage{algpseudocode} % Pseudo code
+\usepackage{algpseudocode}
 \usepackage{algorithm}
-\algnewcommand{\Initialize}[1]{
-  \State\textbf{Initialization:}
-  \Statex\hspace*{\algorithmicindent}\parbox[t]{0.8\linewidth}{\raggedright #1}
-}
+\usepackage{algorithmicx}
+\algnewcommand{\Init}{\item[\textbf{Initialize:}]}
+\algnewcommand{\Input}{\item[\textbf{Input:}]}
+\algnewcommand{\Output}{\item[\textbf{Output:}]}
 
 \usepackage{xspace}
 \newcommand*{\eg}{\textit{e.\,g.\xspace}}
