@@ -44,8 +44,8 @@
 }
 
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\LARGE}{%
-  \filcenter\fontsize{125}{1}\selectfont\thechapter%
+\titleformat{\chapter}[display]{\sffamily\LARGE}{%
+  \rmfamily\bfseries\filcenter\fontsize{125}{1}\selectfont\thechapter%
 }{6ex}{\titlerule\vspace{1.5ex}\filcenter}[\vspace{1.5ex}\titlerule]
 \titleformat{\section}{\bfseries\Large}{\thesection}{1em}{}
 
