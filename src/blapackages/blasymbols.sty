@@ -14,9 +14,9 @@
 \ProcessOptions\relax
 
 \if@draft
-  \usepackage{acronym}
+  \usepackage[nohyperlinks,nolist]{acronym}
 \else
-  \usepackage[printonlyused,withpage]{acronym}
+  \usepackage[nohyperlinks,nolist,printonlyused,withpage]{acronym}
 \fi
 \renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
 
@@ -33,7 +33,7 @@
 \newif\if@losdone\@losdonefalse
 \newcommand*{\listofsymbols}{
   \if@losdone
-    \PackageError{blaglossary}{Can't generate the List of Symbols twice}{}
+    \PackageError{blasymbols}{Cannot generate the List of Symbols twice}{}
   \else
     \chapter{List of Symbols}
     \begin{tabularx}{\linewidth}{p{3em}X}
