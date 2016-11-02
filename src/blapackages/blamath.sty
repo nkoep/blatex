@@ -26,7 +26,7 @@
 % Positive integers
 \@defineset{N}
 % Non-negative integers
-\newcommand*{\NN}{\mathbb{N}_0}
+\newcommand*{\NN}{{\mathbb{N}_0}}
 % Integers
 \@defineset{Z}
 % Rational numbers
@@ -38,7 +38,7 @@
 % Some number field F
 \@defineset{F}
 % N-sphere
-\newcommand*{\sphere}[1]{\mathcal{S}^{#1}}
+\newcommand*{\sphere}[1]{{\mathcal{S}^{#1}}}
 % Set builder
 \DeclareDocumentCommand{\set}{s m o}{%
   \IfValueTF{#3}{\braces{#2 \IfBooleanTF{#1}{\mid}{:} #3}}{\braces{#2}}%
@@ -75,9 +75,9 @@
 % Vector of ones
 \newcommand*{\ones}{\boldsymbol{1}}
 % Indicator function
-\newcommand*{\indicator}[1]{\iota_{#1}}
+\newcommand*{\indicator}[1]{{\iota_{#1}}}
 % Element-wise indicator function on {0,1}
-\newcommand*{\binarize}[1]{\mathds{1}_{\braces{#1}}}
+\newcommand*{\binarize}[1]{{\mathds{1}_{\braces{#1}}}}
 
 % -- Parenthesis, brackets and braces --
 \newcommand*{\parens}[1]{\left(#1\right)}
@@ -108,19 +108,19 @@
 % Trace
 \DeclareMathOperator{\tr}{tr}
 % Inverse
-\newcommand*{\inv}[1]{\parens{#1}^{-1}}
+\newcommand*{\inv}[1]{{\parens{#1}^{-1}}}
 % Transpose
-\newcommand*{\transp}[1]{#1^\top}
+\newcommand*{\transp}[1]{{#1^\top}}
 % Adjoint
-\newcommand*{\adj}[1]{#1^*}
+\newcommand*{\adj}[1]{{#1^*}}
 % Complex conjugation
 \newcommand*{\conj}[1]{\overline{#1}}
 % Orthogonal complement
-\newcommand*{\ocomp}[1]{#1^\bot}
+\newcommand*{\ocomp}[1]{{#1^\bot}}
 % Column of a matrix
-\newcommand*{\col}[1]{\operatorname{col}_{#1}}
+\newcommand*{\col}[1]{{\operatorname{col}_{#1}}}
 % Optimal point
-\newcommand*{\opt}[1]{#1^\star}
+\newcommand*{\opt}[1]{{#1^\star}}
 % Real and imaginary part
 \renewcommand*{\Re}{\operatorname{Re}}
 \renewcommand*{\Im}{\operatorname{Im}}
@@ -155,11 +155,11 @@
 % Interior of a set
 \DeclareMathOperator{\interior}{int}
 % Proximal operator
-\newcommand*{\prox}[1]{\operatorname{prox}_{#1}}
+\newcommand*{\prox}[1]{{\operatorname{prox}_{#1}}}
 % Hard-thresholding operator
-\newcommand*{\hard}[1]{H_{#1}}
+\newcommand*{\hard}[1]{{H_{#1}}}
 % Soft-thresholding operator
-\newcommand*{\shrink}[1]{S_{#1}}
+\newcommand*{\shrink}[1]{{S_{#1}}}
 
 % Math environments
 \DeclareDocumentCommand{\Equation}{s m}{%
@@ -220,12 +220,12 @@
 % Riemannian gradient
 \newcommand*{\rgrad}{\operatorname{grad}}
 % Tangent space/bundle
-\DeclareDocumentCommand{\tspace}{o m}{%
+\DeclareDocumentCommand{\tang}{o m}{%
   T\IfValueT{#1}{_{#1}}#2%
 }
 % Retraction
 \newcommand*{\ret}{R}
-% Projection onto subspace
-\newcommand*{\proj}[1]{\Pi_{#1}}
+% Projection
+\newcommand*{\proj}[1]{{\Pi_{#1}}}
 
 \endinput
