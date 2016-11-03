@@ -26,10 +26,10 @@
   }%
 }
 
-\def\blaref@eqnprefix{eqn}
 \newcommand{\setequationprefix}[1]{%
   \def\blaref@eqnprefix{#1}%
 }
+\setequationprefix{eqn}
 
 % Exported macros
 \DeclareDocumentCommand{\blaref}{s o m}{%
@@ -46,7 +46,11 @@
         }%
       }{#2~}%
     }%
-    \IfStrEq{\blaref@domain}{\blaref@eqnprefix}{\eqref{#3}}{\blaref@blaref{#3}}%
+    \IfStrEq%
+      {\blaref@domain}%
+      {\blaref@eqnprefix}%
+      {\eqref{#3}}%
+      {\blaref@blaref{#3}}%
   }%
 }
 
@@ -70,8 +74,7 @@
 \definereftype{thm}{Theorem}
 \definereftype{rem}{Remark}
 
-% TODO: We need to account for references to optimization problems since we
-%       want.
+% TODO: Account for references to optimization problems.
 \newcommand*{\refprob}[1]{Problem~\eqref{#1}}
 \newcommand*{\reffigsub}[1]{(\subref{#1})}
 
