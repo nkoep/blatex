@@ -57,7 +57,7 @@
 \else
   \def\@symbolstyle#1{\relax#1}
 \fi
-% Typeset a symbol as (v)ector or (m)atrix.
+% Typesetting for (v)ectors and (m)atrices
 \newcommand*{\vm}[1]{\@symbolstyle{#1}}
 % Define a symbol range. The starred variant treats the symbol names as macros
 % upon expansion, e.g., \vm{\sigma} rather than \vm{sigma}.
@@ -77,6 +77,8 @@
 \@definesymbols*{
   Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega
 }
+% Zero vector/matrix
+\newcommand*{\vmzero}{\vm{0}}
 % Identity operator
 \newcommand*{\Id}{\vm{\mathrm{Id}}}
 % Vector of ones
