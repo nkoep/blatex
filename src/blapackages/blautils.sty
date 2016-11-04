@@ -23,6 +23,9 @@
 \algnewcommand{\Init}{\item[\textbf{Initialize:}]}
 \algnewcommand{\Input}{\item[\textbf{Input:}]}
 \algnewcommand{\Output}{\item[\textbf{Output:}]}
+\algdef{SE}[DOWHILE]{DoWhile}{EndDoWhile}{\algorithmicdo}[1]{%
+  \algorithmicwhile\ #1%
+}
 
 \usepackage{xspace}
 \newcommand*{\eg}{\textit{e.\,g.\xspace}}
