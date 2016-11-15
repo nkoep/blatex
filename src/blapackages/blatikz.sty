@@ -17,11 +17,7 @@
 \usetikzlibrary{fit}       % Fit library for drawing bounding boxes
 \usetikzlibrary{positioning} % Node positioning
 \usetikzlibrary{decorations.markings}
-% Enable document externalization.
 \usetikzlibrary{external}
-\tikzsetexternalprefix{tikzfigures/.tikztmpfigures/}
-\tikzexternalize
-% Produce temporary pdf and ps files from tikz graphics.
 \tikzset{
   external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error
   -interaction=batchmode -jobname "\image" "\texsource";
