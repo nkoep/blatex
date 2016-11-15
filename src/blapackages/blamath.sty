@@ -229,9 +229,7 @@
 % Riemannian gradient
 \newcommand*{\rgrad}{\operatorname{grad}}
 % Tangent space/bundle
-\DeclareDocumentCommand{\tang}{o m}{%
-  T\IfValueT{#1}{_{#1}}#2%
-}
+\DeclareDocumentCommand{\tang}{o}{T\IfValueT{#1}{_{#1}}}
 % Retraction
 \newcommand*{\ret}{R}
 % Projection
