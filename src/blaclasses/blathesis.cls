@@ -38,8 +38,8 @@
 \fancypagestyle{fancythesis}{
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
-  \fancyhead[RO]{\selectfont\itshape\nouppercase{\rightmark}}
-  \fancyhead[LE]{\selectfont\nouppercase{\leftmark}}
+  \fancyhead[RO]{\selectfont\scshape\nouppercase{\rightmark}}
+  \fancyhead[LE]{\selectfont\scshape\nouppercase{\leftmark}}
   \fancyfoot[LE,RO]{\thepage}
 }
 
