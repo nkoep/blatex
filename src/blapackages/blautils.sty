@@ -41,4 +41,7 @@
 \newcommand*{\period}{.}
 \newcommand*{\questionmark}{?}
 
+% Force tagged equation in starred environments which normally suppress tags.
+\newcommand*{\blatag}{\addtocounter{equation}{1}\tag{\theequation}}
+
 \endinput
