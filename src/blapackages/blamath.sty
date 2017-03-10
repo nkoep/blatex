@@ -218,7 +218,7 @@
 \DeclareDocumentCommand{\Problem}{s m o m m m}{%
   \def\@padding{\;\;}%
   \IfBooleanTF{#1}{%
-    \IfValueTF{#3}{\operatorname*{#2}\limits_{#3}}{\operatorname{#2}}%
+    \IfValueTF{#3}{\underset{#3}{\text{#2}}}{\text{#2}}%
     \@padding #4%
     \IfValueT{#5}{%
       \IfValueT{#6}{%
@@ -227,7 +227,7 @@
     }%
   }{%
     \begin{array}{cl}
-      \IfValueTF{#3}{\operatorname*{#2}\limits_{#3}}{\operatorname{#2}} &
+      \IfValueTF{#3}{\underset{#3}{\text{#2}}}{\text{#2}} &
       \displaystyle #4 \\
       \text{#5} &
       \setlength\arraycolsep{0pt}%
