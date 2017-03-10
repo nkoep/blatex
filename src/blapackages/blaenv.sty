@@ -29,9 +29,6 @@
 \theoremstyle{blaremark}
 \newtheorem{remark}{Remark}[\@basecounter]
 
-% Generic environments
-\newcommand{\Env}[2]{\begin{#1}#2\end{#1}}
-
 % AMS theorem environments
 \DeclareDocumentCommand{\Thm}{m o +m}{%
   \IfValueTF
@@ -54,5 +51,8 @@
     {\begin{proof}[Proof (#1)]#2\end{proof}}
     {\begin{proof}#2\end{proof}}
 }
+
+% Generic environments
+\newcommand{\Env}[2]{\begin{#1}#2\end{#1}}
 
 \endinput
