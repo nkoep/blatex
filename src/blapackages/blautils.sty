@@ -9,6 +9,7 @@
 \ProcessOptions\relax
 
 \usepackage{xparse}
+\usepackage{xspace}
 
 % Lettrine (first letter of a word spans multiple rows)
 \usepackage{lettrine}
@@ -31,10 +32,10 @@
 
 \newcommand*{\eg}{\textit{e.\,g.}}
 \newcommand*{\ie}{\textit{i.\,e.}}
-\newcommand*{\cf}{cf.}
+\newcommand*{\cf}{cf.\xspace}
 \newcommand*{\st}{s.\,t.}
 \DeclareDocumentCommand{\Wlog}{s}{\IfBooleanTF{#1}{W}{w}.\,l.\,o.\,g.}
-\newcommand*{\wrt}{w.\,r.\,t.}
+\newcommand*{\wrt}{w.\,r.\,t.\xspace}
 \newcommand*{\const}{\mathrm{const.}}
 \newcommand*{\iid}{i.i.d.}
 
