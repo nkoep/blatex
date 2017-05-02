@@ -57,6 +57,8 @@
 \DeclareDocumentCommand{\set}{s m o}{%
   \IfValueTF{#3}{\braces{#2 \IfBooleanTF{#1}{\mid}{:} #3}}{\braces{#2}}%
 }
+% Set complement
+\newcommand*{\comp}[1]{{\overline{#1}}}
 
 % Define style of vectors and matrices.
 \if@boldvectors
