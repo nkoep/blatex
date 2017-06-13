@@ -14,6 +14,9 @@
 \DeclareOption{boldmatrices}{
   \@boldmatricestrue
 }
+\newif\if@shortvmnames\@shortvmnamesfalse \DeclareOption{shortvmnames}{
+  \@shortvmnamestrue
+}
 
 \ProcessOptions\relax
 
@@ -66,27 +69,42 @@
 \else
   \def\@vector#1{\relax#1}
 \fi
+
 \if@boldmatrices
   \def\@matrix#1{\boldsymbol{\mathbf{#1}}}
 \else
   \def\@matrix#1{\relax#1}
 \fi
 
-% Typesetting for (v)ectors and (m)atrices
+% Define vector and matrix macros, and explicitly define the zero
+% vector/matrix.
+\if@shortvmnames
+  \def\@vectorprefix{v}
+  \def\@matrixprefix{m}
+  \newcommand*{\vzero}{\@vector{0}}
+  \newcommand*{\mZero}{\@matrix{0}}
+\else
+  \def\@vectorprefix{vm}
+  \def\@matrixprefix{vm}
+  \newcommand*{\vmzero}{\@vector{0}}
+  \newcommand*{\vmZero}{\@matrix{0}}
+\fi
+
+% Exported macro versions
 \newcommand*{\Vector}[1]{\@vector{#1}}
 \newcommand*{\Matrix}[1]{\@matrix{#1}}
 % Define a symbol range. The starred variant treats the symbol names as macros
 % upon expansion, e.g., \vm{\sigma} rather than \vm{sigma}.
 \DeclareDocumentCommand{\@definevectors}{s m}{
   \foreach \s in {#2}{
-    \expandafter\xdef\csname vm\s\endcsname{
+    \expandafter\xdef\csname \@vectorprefix\s\endcsname{
       \noexpand\@vector{\IfBooleanTF{#1}{\csname\s\endcsname}{\s}}
     }
   }
 }
 \DeclareDocumentCommand{\@definematrices}{s m}{
   \foreach \s in {#2}{
-    \expandafter\xdef\csname vm\s\endcsname{
+    \expandafter\xdef\csname \@matrixprefix\s\endcsname{
       \noexpand\@matrix{\IfBooleanTF{#1}{\csname\s\endcsname}{\s}}
     }
   }
@@ -101,12 +119,10 @@
 \@definematrices*{%
   Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega%
 }
-% Zero vector
-\newcommand*{\vmzero}{\@vector{0}}
-% Zero matrix
-\newcommand*{\vmZero}{\@matrix{0}}
-% Identity operator
+% Identity matrix
 \newcommand*{\Id}{\mathrm{Id}}
+% Identity map (as a general operator)
+\newcommand*{\id}{\operatorname{id}}
 % Vector of ones
 \newcommand*{\ones}{\boldsymbol{1}}
 % Indicator function
