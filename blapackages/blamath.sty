@@ -65,15 +65,15 @@
 
 % Define style of vectors and matrices.
 \if@boldvectors
-  \def\@vector#1{\boldsymbol{\mathbf{#1}}}
+  \def\@vector#1{{\boldsymbol{\mathbf{#1}}}}
 \else
-  \def\@vector#1{\relax#1}
+  \def\@vector#1{{\relax#1}}
 \fi
 
 \if@boldmatrices
-  \def\@matrix#1{\boldsymbol{\mathbf{#1}}}
+  \def\@matrix#1{{\boldsymbol{\mathbf{#1}}}}
 \else
-  \def\@matrix#1{\relax#1}
+  \def\@matrix#1{{\relax#1}}
 \fi
 
 % Define vector and matrix macros, and explicitly define the zero
