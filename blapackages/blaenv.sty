@@ -11,8 +11,6 @@
 % AMS theorem configuration
 \usepackage{amsthm}
 
-\newtheoremstyle{blathm}{}{}{}{}{\bfseries}{}{ }{}
-\theoremstyle{blathm}
 \ifx\thechapter\undefined
   \def\@basecounter{section}
 \else
@@ -24,9 +22,6 @@
 \newtheorem{corollary}{Corollary}[\@basecounter]
 \newtheorem{lemma}{Lemma}[\@basecounter]
 \newtheorem{theorem}{Theorem}[\@basecounter]
-% Define a separate style for remarks.
-\newtheoremstyle{blaremark}{}{}{}{}{\itshape}{}{ }{}
-\theoremstyle{blaremark}
 \newtheorem{remark}{Remark}[\@basecounter]
 
 % AMS theorem environments
