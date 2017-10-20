@@ -18,13 +18,14 @@
 \fi
 \newtheorem{definition}{Definition}[\@basecounter]
 \newtheorem{proposition}{Proposition}[\@basecounter]
-\newtheorem{example}{Example}[\@basecounter]
 \newtheorem{corollary}{Corollary}[\@basecounter]
 \newtheorem{lemma}{Lemma}[\@basecounter]
 \newtheorem{theorem}{Theorem}[\@basecounter]
-% Define a separate style for remarks with non-italic font style.
-\newtheoremstyle{blaremark}{}{}{}{}{\bfseries}{.}{ }{}
-\theoremstyle{blaremark}
+
+% Define a separate style for examples and remarks with non-italic font style.
+\newtheoremstyle{blaplain}{}{}{}{}{\bfseries}{.}{ }{}
+\theoremstyle{blaplain}
+\newtheorem{example}{Example}[\@basecounter]
 \newtheorem{remark}{Remark}[\@basecounter]
 
 % AMS theorem environments
