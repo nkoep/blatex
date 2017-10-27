@@ -182,6 +182,10 @@
 \DeclareDocumentCommand{\norm}{s m}{%
   \IfBooleanTF{#1}{\|#2\|}{\left\|#2\right\|}%
 }
+% Dual norm
+\DeclareDocumentCommand{\dnorm}{s m}{%
+  \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}^*%
+}
 % Absolute value
 \newcommand*{\abs}[1]{\left|#1\right|}
 % Support of a vector
