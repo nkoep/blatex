@@ -158,7 +158,10 @@
 % Probability measure
 \renewcommand*{\P}{\mathbb{P}}
 % Expected value
-\newcommand*{\E}{\mathbb{E}}
+\def\@E{\mathbb{E}}
+\DeclareDocumentCommand{\E}{o}{%
+  \IfValueTF{#1}{\@E_{#1}}{\@E}\+%
+}
 % Variance
 \DeclareMathOperator{\var}{Var}
 % Covariance
