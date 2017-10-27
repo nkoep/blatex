@@ -44,7 +44,7 @@
 \titleformat{\chapter}[display]{\sffamily\Large}{%
   \rmfamily\bfseries\filcenter\fontsize{125}{1}\selectfont\thechapter%
 }{6ex}{\titlerule\vspace{1.5ex}\filcenter}[\vspace{1.5ex}\titlerule]
-\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\section}{\raggedright\bfseries\Large}{\thesection}{1em}{}
 
 % Configure the hyperref package.
 \usepackage[usenames,dvipsnames]{xcolor}
