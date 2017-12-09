@@ -153,6 +153,13 @@
 \newcommand*{\lgauss}[1]{{\left\lfloor#1\right\rfloor}}
 \newcommand*{\ugauss}[1]{{\left\lceil#1\right\rceil}}
 
+% -- Distributions --
+\newcommand*{\@dist}[1]{\mathsf{#1}}
+% Normal distribution
+\newcommand*{\Normal}{\@dist{N}}
+% Bernoulli distribution
+\newcommand*{\Bern}{\@dist{B}}
+
 % -- Operators & functions --
 % Function definition
 \DeclareDocumentCommand{\function}{m m m o o}{%
@@ -169,8 +176,6 @@
 \newcommand*{\subdiff}{\partial}
 % iid distributed
 \newcommand*{\iidsim}{\sim_\mathrm{i.i.d.}}
-% Normal distribution
-\newcommand*{\Normal}{\mathcal{N}}
 % Probability measure
 \renewcommand*{\P}{\mathbb{P}}
 % Expected value
