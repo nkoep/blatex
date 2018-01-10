@@ -205,6 +205,14 @@
 \DeclareDocumentCommand{\norm}{s m}{%
   \IfBooleanTF{#1}{\|#2\|}{\left\|#2\right\|}%
 }
+% Frobenius norm
+\DeclareDocumentCommand{\Fnorm}{s m}{%
+  \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{F}%
+}
+% Total variation (semi-)norm
+\DeclareDocumentCommand{\TVnorm}{s m}{%
+  \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{TV}%
+}
 % Dual norm
 \DeclareDocumentCommand{\dnorm}{s m}{%
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}^*%
