@@ -58,13 +58,18 @@
   \expandafter\def\csname blaref@refname#1\endcsname{#2}%
 }
 
-\definereftype{eqn}{Equation}
+\newcommand*{\sectionname}{Section}
+\newcommand*{\problemname}{Problem}
+\newcommand*{\algorithmname}{Algorithm}
+\newcommand*{\equationname}{Equation}
+
+\definereftype{eqn}{\equationname}
 \definereftype{fig}{\figurename}
 \definereftype{tab}{\tablename}
 \definereftype{chap}{\chaptername}
-\definereftype{sec}{Section}
+\definereftype{sec}{\sectionname}
 \definereftype{app}{\appendixname}
-\definereftype{alg}{Algorithm}
+\definereftype{alg}{\algorithmname}
 
 \definereftype{def}{Definition}
 \definereftype{prop}{Proposition}
@@ -75,7 +80,7 @@
 \definereftype{rem}{Remark}
 
 % TODO: Account for references to optimization problems.
-\newcommand*{\refprob}[1]{Problem~\eqref{#1}}
+\newcommand*{\refprob}[1]{\problemname~\eqref{#1}}
 \newcommand*{\reffigsub}[1]{(\subref{#1})}
 
 \ProcessOptions\relax
