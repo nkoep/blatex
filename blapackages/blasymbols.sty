@@ -13,6 +13,7 @@
 
 % List of symbols
 \usepackage{tabularx}
+\usepackage{import}
 
 \newtoks\@symboltokens
 % Add a new symbol definition
@@ -32,6 +33,17 @@
     \end{tabularx}
     \@losdonetrue
   \fi
+}
+
+% TODO: Redefine the formatting of the \ac macro instead of introducing a new
+%       one.
+\newcommand*{\aci}[1]{\acfi{#1}\acused{#1}}
+\newcommand*{\acli}[1]{\textit{\acl{#1}}}
+
+\AtBeginDocument{%
+  \begin{acronym}
+    \import{../}{acronyms}
+  \end{acronym}%
 }
 
 \endinput
