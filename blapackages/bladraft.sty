@@ -10,6 +10,7 @@
 \usepackage[excludeor]{everyhook}
 \usepackage{marginnote}
 \usepackage{setspace}
+\usepackage{todonotes}
 
 \newif\if@review\@reviewfalse
 \DeclareOption{review}{
@@ -41,8 +42,7 @@
   }
 \fi
 
-\usepackage{todonotes}
-\DeclareDocumentCommand{\blatodo}{o m}{%
+\DeclareDocumentCommand{\blatodo}{o +m}{%
   \tikzexternaldisable%
   \todo[inline,color=green!40,size=\small]{%
     \textbf{TODO:~}\IfValueTF{#1}{#1 \\ #2}{#2}%
