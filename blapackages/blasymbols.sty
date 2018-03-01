@@ -9,11 +9,10 @@
 \ProcessOptions\relax
 
 \usepackage[nohyperlinks,nolist,printonlyused,withpage]{acronym}
-\renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
-
-% List of symbols
 \usepackage{tabularx}
 \usepackage{import}
+
+\renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
 
 \newtoks\@symboltokens
 % Add a new symbol definition
@@ -42,7 +41,7 @@
 
 \AtBeginDocument{%
   \begin{acronym}
-    \import{../}{acronyms}
+    \import{../}{blacronyms}
   \end{acronym}%
 }
 
