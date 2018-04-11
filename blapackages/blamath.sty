@@ -214,6 +214,21 @@
 \DeclareDocumentCommand{\Fnorm}{s m}{%
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{F}%
 }
+% l2 -> l2 operator norm
+\DeclareDocumentCommand{\opnorm}{s m}{%
+  \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_{2\to2}%
+}
+% Triple bar norm
+\def\@lvert{\left\vert}
+\def\@rvert{\right\vert}
+\def\@xkern{\kern-0.25ex}
+\DeclareDocumentCommand{\tnorm}{s m}{%
+  \IfBooleanTF{#1}{%
+    \vert\@xkern\vert\@xkern\vert #2 \vert\@xkern\vert\@xkern\vert%
+  }{
+    \@lvert\@xkern\@lvert\@xkern\@lvert #2 \@rvert\@xkern\@rvert\@xkern\@rvert%
+  }%
+}
 % Total variation (semi-)norm
 \DeclareDocumentCommand{\TVnorm}{s m}{%
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{TV}%
