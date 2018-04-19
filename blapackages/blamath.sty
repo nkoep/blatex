@@ -235,6 +235,10 @@
     \@lvert\@xkern\@lvert\@xkern\@lvert #2 \@rvert\@xkern\@rvert\@xkern\@rvert%
   }%
 }
+% Orlicz norm
+\DeclareDocumentCommand{\subgnorm}{s m}{%
+  \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_{\psi_2}%
+}
 % Total variation (semi-)norm
 \DeclareDocumentCommand{\TVnorm}{s m}{%
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{TV}%
