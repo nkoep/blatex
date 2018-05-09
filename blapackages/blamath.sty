@@ -289,7 +289,7 @@
 % Diagonal matrix
 \newcommand*{\diag}[1]{{\operatorname{diag}\braces{#1}}}
 % Cardinality of a set
-\newcommand*{\card}[1]{\left|#1\right|}
+\DeclareDocumentCommand{\card}{s m}{\IfBooleanTF{#1}{|#2|}{\left|#2\right|}}
 % Signum function
 \DeclareMathOperator{\sgn}{sgn}
 % Sinus cardinalis: si(x) = sin(x) / x
