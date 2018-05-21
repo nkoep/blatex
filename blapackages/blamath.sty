@@ -64,9 +64,9 @@
 \@defineset{C}
 % Some number field F
 \@defineset{F}
-% lp-balls
+% Unit balls
 \newcommand*{\ball}[1]{\mathbb{B}_{#1}}
-% N-sphere
+% Euclidean unit sphere
 \newcommand*{\sphere}[1]{{\mathbb{S}^{#1}}}
 % Set builder
 \DeclareDocumentCommand{\set}{s m o}{%
@@ -219,6 +219,10 @@
 % Frobenius norm
 \DeclareDocumentCommand{\Fnorm}{s m}{%
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{F}%
+}
+% Nuclear norm
+\DeclareDocumentCommand{\nucnorm}{s m}{%
+  \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_*%
 }
 % l2 -> l2 operator norm
 \DeclareDocumentCommand{\opnorm}{s m}{%
