@@ -26,10 +26,8 @@
   }%
 }
 
-\newcommand{\setequationprefix}[1]{%
-  \def\blaref@eqnprefix{#1}%
-}
-\setequationprefix{eqn}
+\def\blaref@eqnprefix{eqn}
+\def\blaref@probprefix{prob}
 
 % Exported macros
 \DeclareDocumentCommand{\blaref}{s o m}{%
@@ -46,11 +44,13 @@
         }%
       }{#2~}%
     }%
-    \IfStrEq%
+    \IfStrEqCase
       {\blaref@domain}%
-      {\blaref@eqnprefix}%
-      {\eqref{#3}}%
-      {\blaref@blaref{#3}}%
+      {%
+        {\blaref@eqnprefix}{\eqref{#3}}%
+        {\blaref@probprefix}{\eqref{#3}}%
+      }%
+      [\blaref@blaref{#3}]%
   }%
 }
 
@@ -58,7 +58,7 @@
   \expandafter\def\csname blaref@refname#1\endcsname{#2}%
 }
 
-\newcommand*{\sectionname}{Section}
+\newcommand*{\secname}{Section}
 \newcommand*{\problemname}{Problem}
 \newcommand*{\algorithmname}{Algorithm}
 \newcommand*{\equationname}{Equation}
@@ -67,9 +67,10 @@
 \definereftype{fig}{\figurename}
 \definereftype{tab}{\tablename}
 \definereftype{chap}{\chaptername}
-\definereftype{sec}{\sectionname}
+\definereftype{sec}{\secname}
 \definereftype{app}{\appendixname}
 \definereftype{alg}{\algorithmname}
+\definereftype{prob}{\problemname}
 
 \definereftype{def}{Definition}
 \definereftype{prop}{Proposition}
@@ -79,8 +80,7 @@
 \definereftype{thm}{Theorem}
 \definereftype{rem}{Remark}
 
-% TODO: Account for references to optimization problems.
-\newcommand*{\refprob}[1]{\problemname~\eqref{#1}}
+% TODO: Integrate this into blaref.
 \newcommand*{\reffigsub}[1]{(\subref{#1})}
 
 \ProcessOptions\relax
