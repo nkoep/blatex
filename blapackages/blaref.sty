@@ -36,8 +36,8 @@
     \IfBooleanF{#1}{%
       \IfNoValueTF{#2}{%
         \blaref@ifempty{\blaref@refname}{}{%
-          \ifcsname blaref@refname\blaref@domain\endcsname%
-            \csname blaref@refname\blaref@domain\endcsname%
+          \ifcsname \blaref@domain Name\endcsname%
+            \csname \blaref@domain Name\endcsname%
           \else%
             \textbf{??}%
           \fi~%
@@ -54,24 +54,20 @@
   }%
 }
 
+% A reference type `foo` defined with this macro with label `Bar` is later
+% accessible as \fooName.
 \newcommand*{\definereftype}[2]{%
-  \expandafter\def\csname blaref@refname#1\endcsname{#2}%
+  \expandafter\def\csname #1Name\endcsname{#2}%
 }
 
-\newcommand*{\secname}{Section}
-\newcommand*{\problemname}{Problem}
-\newcommand*{\algorithmname}{Algorithm}
-\newcommand*{\equationname}{Equation}
-
-\definereftype{eqn}{\equationname}
-\definereftype{fig}{\figurename}
-\definereftype{tab}{\tablename}
-\definereftype{chap}{\chaptername}
-\definereftype{sec}{\secname}
-\definereftype{app}{\appendixname}
-\definereftype{alg}{\algorithmname}
-\definereftype{prob}{\problemname}
-
+\definereftype{eqn}{Equation}
+\definereftype{fig}{Figure}
+\definereftype{tab}{Table}
+\definereftype{chap}{Chapter}
+\definereftype{sec}{Section}
+\definereftype{app}{Appendix}
+\definereftype{alg}{Algorithm}
+\definereftype{prob}{Problem}
 \definereftype{def}{Definition}
 \definereftype{prop}{Proposition}
 \definereftype{ex}{Example}
