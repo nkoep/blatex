@@ -12,7 +12,7 @@
 
 \ProcessOptions\relax
 
-\LoadClass[12pt,a4paper,twoside]{book}
+\LoadClass[12pt,a4paper,dvipsnames,twoside]{book}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -47,7 +47,6 @@
 \titleformat{\section}{\raggedright\bfseries\Large}{\thesection}{1em}{}
 
 % Configure the hyperref package.
-\usepackage[usenames,dvipsnames]{xcolor}
 \def\@linkcolor{NavyBlue}
 \usepackage[
   final,
