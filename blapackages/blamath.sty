@@ -68,7 +68,9 @@
 % Unit balls
 \newcommand*{\ball}[1]{\mathbb{B}_{#1}}
 % Euclidean unit sphere
-\newcommand*{\sphere}[1]{{\mathbb{S}^{#1}}}
+\DeclareDocumentCommand{\sphere}{o m}{%
+  {\mathbb{S}\IfValueTF{#1}{_{#1}}{}^{#2}}%
+}
 % Set builder
 \DeclareDocumentCommand{\set}{s m o}{%
   \IfValueTF{#3}{\braces{#2 \IfBooleanTF{#1}{\mid}{:} #3}}{\braces{#2}}%
