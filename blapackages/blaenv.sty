@@ -10,6 +10,7 @@
 
 % AMS theorem configuration
 \usepackage{amsthm}
+\usepackage{etoolbox}
 
 \ifx\thechapter\undefined
   \def\@basecounter{section}
@@ -21,6 +22,15 @@
 \newtheorem{corollary}{Corollary}[\@basecounter]
 \newtheorem{lemma}{Lemma}[\@basecounter]
 \newtheorem{theorem}{Theorem}[\@basecounter]
+
+% Add a proof step environment. This allows to create labeled steps/sections
+% inside longer proofs.
+\newtheoremstyle{@proofstep}{}{}{}{}{\bfseries}{}{ }{%
+  \thmname{#1}\thmnumber{ #2:}\thmnote{ #3.}%
+}
+\theoremstyle{@proofstep}
+\newtheorem{proofstep}{Step}
+\AtBeginEnvironment{proof}{\setcounter{proofstep}{0}}
 
 % Define a separate style for examples and remarks with non-italic font style.
 \newtheoremstyle{blaplain}{}{}{}{}{\bfseries}{.}{ }{}
@@ -44,6 +54,7 @@
 \newcommand{\Lemma}[2][]{\Thm{lemma}[#1]{#2}}
 \newcommand{\Theorem}[2][]{\Thm{theorem}[#1]{#2}}
 \newcommand{\Remark}[2][]{\Thm{remark}[#1]{#2}}
+\newcommand{\ProofStep}[2][]{\Thm{proofstep}[#1]{#2}}
 \DeclareDocumentCommand{\Proof}{o +m}{%
   \IfValueTF
     {#1}
