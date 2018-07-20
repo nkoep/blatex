@@ -383,6 +383,12 @@
 \newcommand*{\PMatrix}[1]{\Env{pmatrix}{#1}}
 \newcommand*{\Cases}[1]{\Env{dcases}{#1}}
 
+\newcounter{blamath@problemcounter}
+\newcommand*{\tagprob}{%
+  \stepcounter{blamath@problemcounter}%
+  \tag{P$_{\theblamath@problemcounter}$}%
+}
+
 % Optimization problems
 %   #1: star (for single line problems)
 %   #2: min./max./minimize/maximize
