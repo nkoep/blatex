@@ -419,6 +419,28 @@
   }
 }
 
+% Minimization/maximization problems
+%   #1: star (for single line problems)
+%   #2: domain (optional)
+%   #3: objective
+%   #4: constraints
+\DeclareDocumentCommand{\MinProblem}{s o m m}{%
+  \def\@operator{minimize}%
+  \IfBooleanTF{#1}{%
+    \Problem*{\@operator}[#2]{#3}{s.t.}{#4}%
+  }{%
+    \Problem{\@operator}[#2]{#3}{s.t.}{#4}%
+  }
+}
+\DeclareDocumentCommand{\MaxProblem}{s o m m}{%
+  \def\@operator{maximize}%
+  \IfBooleanTF{#1}{%
+    \Problem*{\@operator}[#2]{#3}{s.t.}{#4}%
+  }{%
+   \Problem{\@operator}[#2]{#3}{s.t.}{#4}%
+  }
+}
+
 % -- Miscellaneous --
 % Upright infinitesimal sign for things like df/dx, etc.
 \newcommand*{\de}[1]{\+\mathrm{d}#1}
