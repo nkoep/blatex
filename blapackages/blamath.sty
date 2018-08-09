@@ -278,7 +278,8 @@
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}^*%
 }
 % Absolute value
-\newcommand*{\abs}[1]{\left|#1\right|}
+% \newcommand*{\abs}[1]{\left|#1\right|}
+\DeclareDocumentCommand{\abs}{s m}{\IfBooleanTF{#1}{|#2|}{\left|#2\right|}}
 % Support of a vector
 \DeclareMathOperator{\supp}{supp}
 % Rank
@@ -317,7 +318,10 @@
 % Hadamard product
 \newcommand*{\hada}{\circ}
 % Diagonal matrix
-\newcommand*{\diag}[1]{{\operatorname{diag}\braces{#1}}}
+% \newcommand*{\diag}[1]{{\operatorname{diag}\braces{#1}}}
+\DeclareDocumentCommand{\diag}{s m}{%
+  {\operatorname{diag}\IfBooleanTF{#1}{\{#2\}}{\braces{#2}}}%
+}
 % Cardinality of a set
 \DeclareDocumentCommand{\card}{s m}{\IfBooleanTF{#1}{|#2|}{\left|#2\right|}}
 % Signum function
