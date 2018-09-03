@@ -21,6 +21,20 @@
 \usepackage{lmodern}
 \usepackage{fix-cm}
 \usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+
+% Configure the hyperref package.
+\def\@linkcolor{NavyBlue}
+\hypersetup{
+  final,
+  linktocpage=true,
+  colorlinks=true,
+  linkcolor=\@linkcolor,
+  citecolor=\@linkcolor,
+  filecolor=\@linkcolor,
+  urlcolor=\@linkcolor
+}
 
 % Page layout
 \usepackage[
@@ -45,18 +59,6 @@
   \rmfamily\bfseries\filcenter\fontsize{125}{1}\selectfont\thechapter%
 }{6ex}{\titlerule\vspace{1.5ex}\filcenter}[\vspace{1.5ex}\titlerule]
 \titleformat{\section}{\raggedright\bfseries\Large}{\thesection}{1em}{}
-
-% Configure the hyperref package.
-\def\@linkcolor{NavyBlue}
-\usepackage[
-  final,
-  linktocpage=true,
-  colorlinks=true,
-  linkcolor=\@linkcolor,
-  citecolor=\@linkcolor,
-  filecolor=\@linkcolor,
-  urlcolor=\@linkcolor
-]{hyperref}
 
 % Start chapters on odd pages and make sure the preceeding page is empty.
 \let\@cleardoublepage\cleardoublepage
