@@ -8,11 +8,18 @@
 
 \ProcessOptions\relax
 
-\usepackage[nohyperlinks,nolist,printonlyused,withpage]{acronym}
+\usepackage[
+  toc,
+  nopostdot,
+  acronym,
+  shortcuts,
+  nohypertypes=acronym,
+  nolist,
+  xindy,
+  nomain
+]{glossaries}
 \usepackage{tabularx}
 \usepackage{import}
-
-\renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
 
 \newtoks\@symboltokens
 % Add a new symbol definition
@@ -27,22 +34,14 @@
     \PackageError{blasymbols}{Cannot generate the List of Symbols twice}{}
   \else
     \chapter{List of Symbols}
-    \begin{tabularx}{\linewidth}{p{3em}X}
+    \begin{tabularx}{\linewidth}{l@{\extracolsep{2em}}X}
       \the\@symboltokens
     \end{tabularx}
     \@losdonetrue
   \fi
 }
 
-% TODO: Redefine the formatting of the \ac macro instead of introducing a new
-%       one.
-\newcommand*{\aci}[1]{\acfi{#1}\acused{#1}}
-\newcommand*{\acli}[1]{\textit{\acl{#1}}}
-
-\AtBeginDocument{%
-  \begin{acronym}
-    \import{../}{blacronyms}
-  \end{acronym}%
-}
+\makeglossaries
+\import{../}{blacronyms}
 
 \endinput
