@@ -68,26 +68,26 @@
     \@cleardoublepage%
   }%
 }
-\def\chapter{%
-  \clearemptydoublepage % Starts new page.
-  \thispagestyle{empty}    % Page style of chapter page is 'plain'
-  \global\@topnum\z@        % Prevents figures from going at top of page.
-  \@afterindentfalse        % Suppresses indent in first paragraph.  Change
-  \secdef\@chapter\@schapter% to \@afterindenttrue to have indent.
+\renewcommand{\chapter}{%
+  \clearemptydoublepage       % Starts new page.
+  \thispagestyle{empty}       % Page style of chapter page is 'plain'
+  \global\@topnum\z@          % Prevents figures from going at top of page
+  \@afterindentfalse          % Suppresses indent in first paragraph
+  \secdef\@chapter\@schapter
 }
 
 % Redefine the \listoftables macro so that it adds a TOC entry as well
 \let\@listoftables\listoftables
 \renewcommand{\listoftables}{
-  \@listoftables
   \addcontentsline{toc}{chapter}{\listtablename}
+  \@listoftables
 }
 
 % Redefine the \listoffigures macro so that it adds a TOC entry as well
 \let\@listoffigures\listoffigures
 \renewcommand{\listoffigures}{
-  \@listoffigures
   \addcontentsline{toc}{chapter}{\listfigurename}
+  \@listoffigures
 }
 
 % Configure the bibliography style
