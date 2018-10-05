@@ -6,6 +6,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{blathesis}[2014/05/17]
 
+\newif\if@final\@finalfalse
+\DeclareOption{final}{
+  \@finaltrue
+}
+
 \DeclareOption*{
   \PassOptionsToPackage{\CurrentOption}{blatex}
 }
@@ -99,17 +104,56 @@
   \addcontentsline{toc}{chapter}{References}
 }
 
-% TODO: Finish the title page.
 \renewcommand{\maketitle}{
-  \begin{titlepage}
+  \title{\Title}
+  \author{\Author}
+  \Env{titlepage}{
     \centering
-    \vspace{2.5cm}
-    {\Large\sffamily\@title\unskip\strut\par}
-    \vspace{5cm}
-    {\Large\@author\unskip\strut\par}
-    \vfill
-    {\large\@date\par}
-  \end{titlepage}
+    {\Huge\@title}
+
+    \vspace{35mm}
+
+    \if@final
+        Von der Fakultät für Elektrotechnik und Informationstechnik \\
+        der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
+        zur Erlangung des akademischen Grades eines Doktors \\
+        der Ingenieurwissenschaften genehmigte Dissertation
+
+        \vspace{20mm}
+
+        vorgelegt von
+        \vspace{5mm}
+    \else
+        % Statement for submission version
+        Der Fakultät für Elektrotechnik und Informationstechnik \\
+        der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
+        vorgelegte Dissertation zur Erlangung \\
+        des akademischen Grades eines Doktors \\
+        der Ingenieurwissenschaften
+
+        \vspace{25mm}
+    \fi
+
+    \AuthorDegree \\
+    \@author \\
+    \vspace{5mm}
+    aus \AuthorBirthplace \\
+
+    \if@final
+        \vspace{20mm}
+        \begin{tabular}{ll}
+          Berichter: & \examiner \\
+                     & \secondexaminer
+        \end{tabular}
+        \vspace{20mm}
+
+        Tag der mündlichen Prüfung: \dateofexam
+
+        \vspace{30mm}
+        Diese Dissertation ist auf den Internetseiten \\
+        der Hochschulbibliothek online verfügbar.
+    \fi
+  }
 }
 
 \RequirePackage{blatex}
