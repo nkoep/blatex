@@ -48,7 +48,7 @@
     \PackageError{blasymbols}{Cannot generate the List of Symbols twice}{}
   \else
     \chapter{List of Symbols}
-    \begin{tabularx}{\linewidth}{l@{\extracolsep{2em}}X}
+    \begin{tabularx}{\linewidth}{@{}l@{\extracolsep{2em}}X@{}}
       \the\@symboltokens
     \end{tabularx}
     \@losdonetrue
