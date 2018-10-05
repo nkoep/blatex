@@ -21,6 +21,20 @@
 \usepackage{ltxtable}
 \usepackage{import}
 
+% Define glossary style similar to TOC.
+\newglossarystyle{bla}{%
+  \setglossarystyle{long}%
+  \renewenvironment{theglossary}%
+    {\tabularx{\linewidth}{@{}l@{\extracolsep{2em}}X@{}}}%
+    {\endtabularx}%
+}
+% Define variant of dotfill macro with wider dot spacing.
+\providecommand{\tocdotfill}[1]{%
+  \leaders\hbox{$\m@th\mkern #1 mu\hbox{.}\mkern #1 mu$}\hfill%
+}
+\renewcommand*\glspostdescription{\tocdotfill{4.5}}
+\setglossarystyle{bla}
+
 \newtoks\@symboltokens
 % Add a new symbol definition
 \newcommand*{\addsymbol}[2]{
