@@ -142,12 +142,12 @@
     \if@final
         \vspace{20mm}
         \begin{tabular}{ll}
-          Berichter: & \examiner \\
-                     & \secondexaminer
+          Berichter: & \Examiner \\
+                     & \SecondExaminer
         \end{tabular}
         \vspace{20mm}
 
-        Tag der mündlichen Prüfung: \dateofexam
+        Tag der mündlichen Prüfung: \ExaminationDate
 
         \vspace{30mm}
         Diese Dissertation ist auf den Internetseiten \\
