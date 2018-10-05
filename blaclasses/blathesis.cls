@@ -45,7 +45,7 @@
 \usepackage[
   left=3.25cm,
   right=3.25cm,
-  top=3.2cm,headsep=0.5cm,
+  top=3.7cm,headsep=1cm,
   bottom=5cm,footskip=1.5cm
 ]{geometry}
 
@@ -58,19 +58,18 @@
   \fancyhead[LE]{\selectfont\scshape\nouppercase{\leftmark}}
   \fancyfoot[LE,RO]{\thepage}
 }
-
-\usepackage{titlesec}
-\titleformat{\chapter}[display]{\sffamily\Large}{%
-  \rmfamily\bfseries\filcenter\fontsize{125}{1}\selectfont\thechapter%
-}{6ex}{\titlerule\vspace{1.5ex}\filcenter}[\vspace{1.5ex}\titlerule]
-\titleformat{\section}{\raggedright\bfseries\Large}{\thesection}{1em}{}
+\pagestyle{fancy}
+\def\@barseparator{~~\textcolor{gray}{|}~~}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\@barseparator#1}}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\chaptername~\thechapter\@barseparator#1}{}%
+}
 
 % Start chapters on odd pages and make sure the preceeding page is empty.
-\let\@cleardoublepage\cleardoublepage
 \newcommand*{\clearemptydoublepage}{%
   \clearpage{%
-    \pagestyle{empty}%
-    \@cleardoublepage%
+    \thispagestyle{empty}%
+    \cleardoublepage%
   }%
 }
 \renewcommand{\chapter}{%
@@ -80,6 +79,15 @@
   \@afterindentfalse          % Suppresses indent in first paragraph
   \secdef\@chapter\@schapter
 }
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\sffamily\LARGE}
+  {\filcenter\rmfamily\bfseries\fontsize{4cm}{1cm}\selectfont\thechapter}
+  {6ex}
+  {\titlerule\vspace{1.5ex}\filcenter}
+  [\vspace{1.5ex}\titlerule]
+\titleformat{\section}{\raggedright\bfseries\Large}{\thesection}{1em}{}
 
 % Redefine the \listoftables macro so that it adds a TOC entry as well
 \let\@listoftables\listoftables
