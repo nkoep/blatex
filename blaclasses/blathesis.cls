@@ -118,15 +118,6 @@
   \@listoffigures
 }
 
-% Configure the bibliography style
-\bibliographystyle{alpha}
-\let\@bibliography\bibliography
-\renewcommand{\bibliography}[1]{
-  \renewcommand{\bibname}{References}
-  \@bibliography{#1}
-  \addcontentsline{toc}{chapter}{References}
-}
-
 \renewcommand{\maketitle}{
   \title{\Title}
   \author{\Author}
