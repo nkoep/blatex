@@ -49,7 +49,22 @@
   bottom=5cm,footskip=1.5cm
 ]{geometry}
 
-% Header/footer
+% Define bibliography style.
+\usepackage[
+  backend=biber,
+  style=alphabetic,
+  sorting=nyt
+]{biblatex}
+\DefineBibliographyStrings{english}{
+  bibliography = {References}
+}
+% Use superscript plus sign for citation labels in case of multiple authors.
+\renewcommand*{\labelalphaothers}{\textsuperscript{+}}
+% Use boldface citation labels.
+\DeclareFieldFormat{labelalpha}{\mkbibbold{#1}}
+\DeclareFieldFormat{extraalpha}{\mkbibbold{\mknumalph{#1}}}
+
+% Set up header and footer.
 \usepackage{fancyhdr}
 \fancypagestyle{fancythesis}{
   \fancyhf{}
