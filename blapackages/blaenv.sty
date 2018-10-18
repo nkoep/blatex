@@ -11,6 +11,10 @@
 % AMS theorem configuration
 \usepackage{amsthm}
 \usepackage{etoolbox}
+\usepackage{enumitem}
+
+\newlist{renumerate}{enumerate}{1}
+\setlist[renumerate]{label=(\roman*),before=\raggedright}
 
 \usepackage{blaref}
 
