@@ -72,9 +72,12 @@
 \DeclareDocumentCommand{\sphere}{o m}{%
   {\mathbb{S}\IfValueTF{#1}{_{#1}}{}^{#2}}%
 }
-% Set builder
+% Set builders
 \DeclareDocumentCommand{\set}{s m o}{%
   \IfValueTF{#3}{\braces{#2 \IfBooleanTF{#1}{\mid}{:} #3}}{\braces{#2}}%
+}
+\DeclareDocumentCommand{\smallset}{s m o}{%
+  \IfValueTF{#3}{\{#2 \IfBooleanTF{#1}{\mid}{:} #3\}}{\{#2\}}%
 }
 % Set complement
 \newcommand*{\comp}[1]{{\overline{#1}}}
