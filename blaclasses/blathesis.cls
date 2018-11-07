@@ -116,6 +116,12 @@
   {\thesubsection}
   {1em}
   {}
+\titleformat
+  {\subsubsection}
+  {\raggedright\sffamily\bfseries}
+  {\thesubsubsection}
+  {1em}
+  {}
 
 % Redefine the \listoftables macro so that it adds a TOC entry as well
 \let\@listoftables\listoftables
