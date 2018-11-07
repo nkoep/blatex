@@ -96,13 +96,26 @@
 }
 
 \usepackage{titlesec}
-\titleformat{\chapter}[display]
+\titleformat
+  {\chapter}
+  [display]
   {\sffamily\LARGE}
   {\filcenter\rmfamily\bfseries\fontsize{4cm}{1cm}\selectfont\thechapter}
   {6ex}
   {\titlerule\vspace{1.5ex}\filcenter}
   [\vspace{1.5ex}\titlerule]
-\titleformat{\section}{\raggedright\bfseries\Large}{\thesection}{1em}{}
+\titleformat
+  {\section}
+  {\raggedright\sffamily\bfseries\Large}
+  {\thesection}
+  {1em}
+  {}
+\titleformat
+  {\subsection}
+  {\raggedright\sffamily\large}
+  {\thesubsection}
+  {1em}
+  {}
 
 % Redefine the \listoftables macro so that it adds a TOC entry as well
 \let\@listoftables\listoftables
