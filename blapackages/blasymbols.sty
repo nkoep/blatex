@@ -17,6 +17,9 @@
   nolist,
   xindy,
   nomain,
+  % FIXME: indexonlyfirst doesn't seem to work properly. Using 'nonumberlist'
+  % 			 would disable all page references.
+  % nonumberlist,
   indexonlyfirst
 ]{glossaries}
 \usepackage{ltxtable}
@@ -54,6 +57,46 @@
     \end{tabularx}
     \@losdonetrue
   \fi
+}
+
+% Place first use of acronym in \emph{}, see
+%   https://tex.stackexchange.com/a/232722)
+
+\newcommand*{\glossfirstformat}[1]{\emph{#1}}
+
+\newacronymstyle{blacro}
+	{\GlsUseAcrEntryDispStyle{long-short}}
+	{%
+		\GlsUseAcrStyleDefs{long-short}%
+		\renewcommand*{\genacrfullformat}[1]{%
+		 \glossfirstformat{\glsentrylong{##1}}\space
+		 (\glsentryshort{##1})%
+		}%
+		\renewcommand*{\Genacrfullformat}[2]{%
+		 \glossfirstformat{\Glsentrylong{##1}}\space
+		 (\glsentryshort{##1})%
+		}%
+		\renewcommand*{\genplacrfullformat}[2]{%
+		 \glossfirstformat{\glsentrylongpl{##1}}\space
+		 (\glsentryshortpl{##1})%
+		}%
+		\renewcommand*{\Genplacrfullformat}[2]{%
+		 \glossfirstformat{\Glsentrylongpl{##1}}\space
+		 (\glsentryshortpl{##1})%
+		}%
+	}
+\setacronymstyle{blacro}
+
+\defglsentryfmt{%
+  \ifglshaslong{\glslabel}{%
+    \glsgenacfmt%
+  }{%
+    \ifglsused{\glslabel}{%
+      \glsgenentryfmt%
+    }{%
+      \glossfirstformat{\glsgenentryfmt}%
+    }%
+  }%
 }
 
 \newcommand*{\acfi}[1]{\emph{\acl{#1}} (\acs{#1})}
