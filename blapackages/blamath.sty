@@ -70,7 +70,7 @@
 \newcommand*{\ball}[1]{\mathbb{B}_{#1}}
 % Euclidean unit sphere
 \DeclareDocumentCommand{\sphere}{o m}{%
-  {\mathbb{S}\IfValueTF{#1}{_{#1}}{}^{#2}}%
+  \mathbb{S}\IfValueTF{#1}{_{#1}}{}^{#2}%
 }
 % Set builders
 \DeclareDocumentCommand{\set}{s m o}{%
@@ -92,6 +92,8 @@
 \newcommand*{\union}{\bigcup}
 % Intersection
 \newcommand*{\intersection}{\bigcap}
+% Symmetric set difference
+\newcommand*{\setdiff}[2]{#1 \Delta #2}
 
 % Define style of vectors and matrices.
 \if@boldvectors
@@ -285,7 +287,6 @@
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}^*%
 }
 % Absolute value
-% \newcommand*{\abs}[1]{\left|#1\right|}
 \DeclareDocumentCommand{\abs}{s m}{\IfBooleanTF{#1}{|#2|}{\left|#2\right|}}
 % Support of a vector
 \DeclareMathOperator{\supp}{supp}
@@ -325,7 +326,6 @@
 % Hadamard product
 \newcommand*{\hada}{\circ}
 % Diagonal matrix
-% \newcommand*{\diag}[1]{{\operatorname{diag}\braces{#1}}}
 \DeclareDocumentCommand{\diag}{s m}{%
   {\operatorname{diag}\IfBooleanTF{#1}{\{#2\}}{\braces{#2}}}%
 }
