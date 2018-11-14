@@ -53,15 +53,17 @@
     {\begin{#3}\IfValueT{#2}{\label{#1:#2}}#5\end{#3}}
 }
 
-% Convenience macros for theorem environments
-\NewDocumentCommand{\Theorem}{d<> o m}{\Thm{thm}[#1]{theorem}[#2]{#3}}
-\NewDocumentCommand{\Definition}{d<> o m}{\Thm{def}[#1]{definition}[#2]{#3}}
-\NewDocumentCommand{\Proposition}{d<> o m}{\Thm{prop}[#1]{proposition}[#2]{#3}}
-\NewDocumentCommand{\Example}{d<> o m}{\Thm{ex}[#1]{example}[#2]{#3}}
-\NewDocumentCommand{\Corollary}{d<> o m}{\Thm{cor}[#1]{corollary}[#2]{#3}}
-\NewDocumentCommand{\Lemma}{d<> o m}{\Thm{lem}[#1]{lemma}[#2]{#3}}
-\NewDocumentCommand{\Remark}{d<> o m}{\Thm{rem}[#1]{remark}[#2]{#3}}
-\NewDocumentCommand{\ProofStep}{d<> o m}{\Thm{step}[#1]{proofstep}[#2]{#3}}
+% Convenience macros for amsthm environments
+\NewDocumentCommand{\Theorem}{d<> o +m}{\Thm{thm}[#1]{theorem}[#2]{#3}}
+\NewDocumentCommand{\Definition}{d<> o +m}{\Thm{def}[#1]{definition}[#2]{#3}}
+\NewDocumentCommand{\Proposition}{d<> o +m}{%
+  \Thm{prop}[#1]{proposition}[#2]{#3}%
+}
+\NewDocumentCommand{\Example}{d<> o +m}{\Thm{ex}[#1]{example}[#2]{#3}}
+\NewDocumentCommand{\Corollary}{d<> o +m}{\Thm{cor}[#1]{corollary}[#2]{#3}}
+\NewDocumentCommand{\Lemma}{d<> o +m}{\Thm{lem}[#1]{lemma}[#2]{#3}}
+\NewDocumentCommand{\Remark}{d<> o +m}{\Thm{rem}[#1]{remark}[#2]{#3}}
+\NewDocumentCommand{\ProofStep}{d<> o +m}{\Thm{step}[#1]{proofstep}[#2]{#3}}
 
 \DeclareDocumentCommand{\Proof}{o +m}{%
   \IfValueTF
