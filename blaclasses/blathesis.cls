@@ -45,8 +45,10 @@
 \usepackage[
   left=3.25cm,
   right=3.25cm,
-  top=3.7cm,headsep=1cm,
-  bottom=5cm,footskip=1.5cm
+  top=3.25cm,
+  headsep=1cm,
+  bottom=5cm,
+  footskip=1.5cm
 ]{geometry}
 
 % Define bibliography style.
