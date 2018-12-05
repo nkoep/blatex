@@ -27,6 +27,8 @@
 \usepackage{pgffor}
 
 \usepackage{blaenv}
+\usepackage{blautils}
+
 \newcommand*{\+}{\mkern1mu}
 \newcommand*{\Forall}{\;\forall\+}
 \newcommand*{\Exists}{\exists\+}
@@ -466,6 +468,46 @@
   }{%
    \Problem{\@operator}[#2]{#3}{s.t.}{#4}%
   }
+}
+
+\DeclareDocumentCommand{\@OptProblem}{s d<> d|| o m m m}{%
+  \def\@programbody{%
+    \IfValueT{#2}{%
+      \IfValueT{#3}{\tag{#3}}%
+      \label{prob:#2}%
+    }%
+    \IfBooleanTF{#1}{%
+      \Problem*{#5}[#4]{#6}{s.t.}{#7}%
+    }{%
+      \Problem{#5}[#4]{#6}{s.t.}{#7}%
+    }%
+  }
+  \IfValueTF{#2}{%
+    \ifblatex@draft%
+      \blautils@printbox{\texttt{\detokenize{prob:#2}}}%
+    \fi%
+    \Equation{\@programbody}%
+  }{%
+    \Equation*{\@programbody}%
+  }%
+}
+
+\DeclareDocumentCommand{\Minimize}{s d<> d|| o m m}{%
+  \def\@operator{minimize}%
+  \IfBooleanTF{#1}{%
+    \@OptProblem*<#2>|#3|[#4]{\@operator}{#5}{#6}%
+  }{%
+    \@OptProblem<#2>|#3|[#4]{\@operator}{#5}{#6}%
+  }%
+}
+
+\DeclareDocumentCommand{\Maximize}{s d<> d|| o m m}{%
+  \def\@operator{maximize}%
+  \IfBooleanTF{#1}{%
+    \@OptProblem*<#2>|#3|[#4]{\@operator}{#5}{#6}%
+  }{%
+    \@OptProblem<#2>|#3|[#4]{\@operator}{#5}{#6}%
+  }%
 }
 
 % -- Miscellaneous --

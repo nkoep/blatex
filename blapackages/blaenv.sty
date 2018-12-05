@@ -6,17 +6,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blaenv}[2015/03/18 v0.1]
 
-\newif\ifbla@draft\bla@draftfalse
-\DeclareOption{draft}{
-  \bla@drafttrue
-}
-
 \ProcessOptions\relax
 
 % AMS theorem configuration
 \usepackage{amsthm}
 \usepackage{etoolbox}
 \usepackage{enumitem}
+
+\usepackage{blautils}
 
 \newlist{renumerate}{enumerate}{1}
 \setlist[renumerate]{label=(\roman*)}
@@ -52,18 +49,8 @@
 
 % AMS theorem environments
 \DeclareDocumentCommand{\Thm}{m o m o +m}{%
-  \ifbla@draft
-    \IfValueT{#2}{%
-      \par
-      \vspace{0.5em}
-      \noindent\fbox{%
-        \def\bla@boxwidth{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
-        \begin{minipage}{\bla@boxwidth}
-          \centering
-          \texttt{\detokenize{#1:#2}}
-        \end{minipage}%
-      }%
-    }
+  \ifblatex@draft
+    \IfValueT{#2}{\blautils@printbox{\texttt{\detokenize{#1:#2}}}}
   \fi
   \IfValueTF
     {#4}
