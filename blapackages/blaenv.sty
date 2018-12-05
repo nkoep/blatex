@@ -6,6 +6,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blaenv}[2015/03/18 v0.1]
 
+\newif\ifbla@draft\bla@draftfalse
+\DeclareOption{draft}{
+  \bla@drafttrue
+}
+
 \ProcessOptions\relax
 
 % AMS theorem configuration
@@ -47,6 +52,19 @@
 
 % AMS theorem environments
 \DeclareDocumentCommand{\Thm}{m o m o +m}{%
+  \ifbla@draft
+    \IfValueT{#2}{%
+      \par
+      \vspace{0.5em}
+      \noindent\fbox{%
+        \def\bla@boxwidth{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+        \begin{minipage}{\bla@boxwidth}
+          \centering
+          \texttt{\detokenize{#1:#2}}
+        \end{minipage}%
+      }%
+    }
+  \fi
   \IfValueTF
     {#4}
     {\begin{#3}[{#4}]\IfValueT{#2}{\label{#1:#2}}#5\end{#3}}

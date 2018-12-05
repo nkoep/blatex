@@ -12,37 +12,9 @@
 \usepackage{setspace}
 \usepackage{todonotes}
 
-\newif\if@review\@reviewfalse
-\DeclareOption{review}{
-  \@reviewtrue
-}
-
-\newif\if@source\@sourcefalse
-\DeclareOption{source}{
-  \@sourcetrue
-}
-\newif\if@marginhook\@marginhookfalse
-
 \ProcessOptions\relax
 
-\if@review
-  \doublespacing
-  \linenumbers
-\fi
-
-\if@source
-  \PushPostHook{par}{
-    \if@marginhook
-      \relax
-    \else
-      \@marginhooktrue
-      \marginnote{\small\ttfamily\the\inputlineno}
-      \@marginhookfalse
-    \fi
-  }
-\fi
-
-\DeclareDocumentCommand{\@bladraft}{m m o +m}{
+\DeclareDocumentCommand{\@blanote}{m m o +m}{
   \tikzexternaldisable%
   \todo[inline,color=#1!40,size=\small,caption={}]{%
     \textbf{#2:~}\IfValueTF{#3}{#3 \\ #4}{#4}%
@@ -51,11 +23,11 @@
 }
 
 \DeclareDocumentCommand{\blatodo}{o +m}{%
-  \@bladraft{green}{TODO}[#1]{#2}%
+  \@blanote{green}{TODO}[#1]{#2}%
 }
 
 \DeclareDocumentCommand{\blafixme}{o +m}{%
-  \@bladraft{red}{FIXME}[#1]{#2}%
+  \@blanote{red}{FIXME}[#1]{#2}%
 }
 
 \endinput
