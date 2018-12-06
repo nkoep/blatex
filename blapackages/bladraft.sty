@@ -15,11 +15,13 @@
 \ProcessOptions\relax
 
 \DeclareDocumentCommand{\@blanote}{m m o +m}{
-  \tikzexternaldisable%
-  \todo[inline,color=#1!40,size=\small,caption={}]{%
-    \textbf{#2:~}\IfValueTF{#3}{#3 \\ #4}{#4}%
-  }%
-  \tikzexternalenable%
+  \ifblatex@draft%
+    \tikzexternaldisable%
+    \todo[inline,color=#1!40,size=\small,caption={}]{%
+      \textbf{#2:~}\IfValueTF{#3}{#3 \\ #4}{#4}%
+    }%
+    \tikzexternalenable%
+  \fi%
 }
 
 \DeclareDocumentCommand{\blatodo}{o +m}{%
