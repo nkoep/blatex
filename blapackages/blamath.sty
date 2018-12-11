@@ -171,11 +171,21 @@
 \newcommand*{\dfac}{!!\+}
 
 % -- Parentheses, brackets, braces, etc. --
-\newcommand*{\parens}[1]{{\left(#1\right)}}
-\newcommand*{\brackets}[1]{{\left[#1\right]}}
-\newcommand*{\braces}[1]{{\left\{#1\right\}}}
-\newcommand*{\lgauss}[1]{{\left\lfloor#1\right\rfloor}}
-\newcommand*{\ugauss}[1]{{\left\lceil#1\right\rceil}}
+\NewDocumentCommand{\parens}{s m}{%
+  {\IfBooleanTF{#1}{(#2)}{\left(#2\right)}}%
+}
+\NewDocumentCommand{\brackets}{s m}{%
+  {\IfBooleanTF{#1}{[#2]}{\left[#2\right]}}%
+}
+\NewDocumentCommand{\braces}{s m}{%
+  {\IfBooleanTF{#1}{\{#2\}}{\left\{#2\right\}}}%
+}
+\NewDocumentCommand{\lgauss}{s m}{%
+  {\IfBooleanTF{#1}{\lfloor#2\rfloor}{\left\lfloor#2\right\rfloor}}%
+}
+\NewDocumentCommand{\ugauss}{s m}{%
+  {\IfBooleanTF{#1}{\lceil#2\rceil}{\left\lceil#2\right\rceil}}%
+}
 
 % -- Distributions --
 \newcommand*{\@dist}[1]{\mathsf{#1}}
