@@ -330,7 +330,9 @@
 \renewcommand*{\Re}{\mathfrak{Re}}
 \renewcommand*{\Im}{\mathfrak{Im}}
 % Inner product
-\newcommand*{\inner}[2]{\left\langle#1,#2\right\rangle}
+\NewDocumentCommand{\inner}{s m m}{%
+  \IfBooleanTF{#1}{\langle#2,#3\rangle}{\left\langle#2,#3\right\rangle}
+}
 % Hadamard product
 \newcommand*{\hada}{\circ}
 % Diagonal matrix
