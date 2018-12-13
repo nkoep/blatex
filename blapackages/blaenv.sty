@@ -11,12 +11,15 @@
 % AMS theorem configuration
 \usepackage{amsthm}
 \usepackage{etoolbox}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 
 \usepackage{blautils}
 
 \newlist{renumerate}{enumerate}{1}
 \setlist[renumerate]{label=(\roman*)}
+
+\newlist{enumi*}{enumerate*}{1}
+\setlist[enumi*]{label=\textit{\roman*})}
 
 \usepackage{blaref}
 
