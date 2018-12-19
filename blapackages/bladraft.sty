@@ -18,7 +18,7 @@
   \ifblatex@draft%
     \tikzexternaldisable%
     \todo[inline,color=#1!40,size=\small,caption={}]{%
-      \textbf{#2:~}\IfValueTF{#3}{#3 \\ #4}{#4}%
+      \textbf{#2:~}\IfValueTF{#3}{\textit{#3} \\ #4}{#4}%
     }%
     \tikzexternalenable%
   \fi%
