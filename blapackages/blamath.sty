@@ -202,8 +202,12 @@
 \newcommand*{\eqdist}{\stackrel{\mathrm{d}}{=}}
 
 % Complexity
-\newcommand*{\bigO}[1]{\mathcal{O}\parens{#1}}
-\newcommand*{\bigOmega}[1]{\Omega\parens{#1}}
+\NewDocumentCommand{\bigO}{s m}{%
+  \mathcal{O}\IfBooleanTF{#1}{(#2)}{\parens{#2}}%
+}
+\NewDocumentCommand{\bigOmega}{s m}{%
+  \Omega\IfBooleanTF{#1}{(#2)}{\parens{#2}}%
+}
 
 % -- Operators & functions --
 % Function definition
