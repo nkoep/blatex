@@ -43,12 +43,12 @@
 
 % Page layout
 \usepackage[
-  left=3.25cm,
-  right=3.25cm,
-  top=3.25cm,
-  headsep=1cm,
-  bottom=5cm,
-  footskip=1.5cm
+  left=2.75cm,
+  right=2.75cm,
+  top=2.75cm,
+  headsep=0.5cm,
+  bottom=4.25cm,
+  footskip=1cm
 ]{geometry}
 
 % Define bibliography style.
