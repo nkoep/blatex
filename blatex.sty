@@ -6,13 +6,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blatex}[2015/03/18 v0.1]
 
-\newif\ifblatex@draft\blatex@draftfalse
-\DeclareOption{draft}{
-  \blatex@drafttrue
-}
-
 % Handle package options
-\DeclareOption{draft}{
+\newif\ifblatex@draft\blatex@draftfalse
+\DeclareOption{bladraft}{
   \blatex@drafttrue
 }
 
