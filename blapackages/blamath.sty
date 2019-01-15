@@ -430,10 +430,10 @@
 \newcommand*{\PMatrix}[1]{\Env{pmatrix}{#1}}
 \newcommand*{\Cases}[1]{\Env{dcases}{#1}}
 
-\newcounter{blamath@problemcounter}
+\newcounter{blamath@problemcounter}[chapter]
 \newcommand*{\tagprob}{%
   \stepcounter{blamath@problemcounter}%
-  \tag{P$_{\theblamath@problemcounter}$}%
+  \tag{P$_{\thechapter.\theblamath@problemcounter}$}%
 }
 
 % Optimization problems
@@ -491,7 +491,7 @@
 \DeclareDocumentCommand{\@OptProblem}{s d<> d|| o m m m}{%
   \def\@programbody{%
     \IfValueT{#2}{%
-      \IfValueT{#3}{\tag{#3}}%
+      \IfValueTF{#3}{\tag{#3}}{\tagprob}%
       \label{prob:#2}%
     }%
     \IfBooleanTF{#1}{%
