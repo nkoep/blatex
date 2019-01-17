@@ -430,11 +430,19 @@
 \newcommand*{\PMatrix}[1]{\Env{pmatrix}{#1}}
 \newcommand*{\Cases}[1]{\Env{dcases}{#1}}
 
-\newcounter{blamath@problemcounter}[chapter]
-\newcommand*{\tagprob}{%
-  \stepcounter{blamath@problemcounter}%
-  \tag{P$_{\thechapter.\theblamath@problemcounter}$}%
-}
+\ifx\thechapter\undefined
+  \newcounter{blamath@problemcounter}
+  \newcommand*{\tagprob}{%
+    \stepcounter{blamath@problemcounter}%
+    \tag{P$_{\theblamath@problemcounter}$}%
+  }
+\else
+  \newcounter{blamath@problemcounter}[chapter]
+  \newcommand*{\tagprob}{%
+    \stepcounter{blamath@problemcounter}%
+    \tag{P$_{\thechapter.\theblamath@problemcounter}$}%
+  }
+\fi
 
 % Optimization problems
 %   #1: star (for single line problems)
