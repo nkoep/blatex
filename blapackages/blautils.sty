@@ -26,16 +26,6 @@
   }%
 }
 
-% Exported macros
-
-% Lettrine (first letter of a word spans multiple rows)
-\usepackage{lettrine}
-\newcommand*{\Lettrine}[1]{
-  \StrLeft{#1}{1}[\head]
-  \StrGobbleLeft{#1}{1}[\tail]
-  \lettrine[lines=2, lraise=0.0, nindent=0em, slope=0em]{\head}{\tail}
-}
-
 % Algorithm listings
 \usepackage{algpseudocode}
 \usepackage{algorithm}
