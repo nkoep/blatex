@@ -100,7 +100,7 @@
 \titleformat
   {\chapter}
   [display]
-  {\sffamily\LARGE}
+  {\sffamily\huge}
   {\filcenter\rmfamily\bfseries\fontsize{120pt}{150pt}\selectfont\thechapter}
   {6ex}
   {\titlerule\vspace{1.5ex}\filcenter}
