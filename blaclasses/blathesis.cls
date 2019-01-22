@@ -68,7 +68,7 @@
 
 % Set up header and footer.
 \usepackage{fancyhdr}
-\fancypagestyle{fancythesis}{
+\fancypagestyle{blathesis}{
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
   \fancyhead[RO]{\selectfont\scshape\nouppercase{\rightmark}}
@@ -84,17 +84,16 @@
 
 % Start chapters on odd pages and make sure the preceeding page is empty.
 \newcommand*{\clearemptydoublepage}{%
-  \clearpage{%
-    \thispagestyle{empty}%
-    \cleardoublepage%
-  }%
+  \clearpage%
+  \thispagestyle{empty}%
+  \cleardoublepage%
 }
 \renewcommand{\chapter}{%
   \clearemptydoublepage       % Starts new page.
   \thispagestyle{empty}       % Page style of chapter page is 'plain'
   \global\@topnum\z@          % Prevents figures from going at top of page
   \@afterindentfalse          % Suppresses indent in first paragraph
-  \secdef\@chapter\@schapter
+  \secdef\@chapter\@schapter%
 }
 
 \usepackage{titlesec}
@@ -102,7 +101,7 @@
   {\chapter}
   [display]
   {\sffamily\LARGE}
-  {\filcenter\rmfamily\bfseries\fontsize{4cm}{1cm}\selectfont\thechapter}
+  {\filcenter\rmfamily\bfseries\fontsize{120pt}{150pt}\selectfont\thechapter}
   {6ex}
   {\titlerule\vspace{1.5ex}\filcenter}
   [\vspace{1.5ex}\titlerule]
@@ -190,6 +189,8 @@
     \fi
   }
 }
+
+\raggedbottom
 
 \RequirePackage{blatex}
 
