@@ -106,7 +106,9 @@
   {\filcenter\rmfamily\bfseries\fontsize{120pt}{150pt}\selectfont\thechapter}
   {6ex}
   {\titlerule\vspace{1.5ex}\filcenter}
-  [\vspace{1.5ex}\titlerule]
+  % [\vspace{1.5ex}\titlerule]
+  [\vspace{1.5ex}\titlerule\vspace{%
+    0pt plus 0.5\baselineskip minus 0.5\baselineskip}]
 \titleformat
   {\section}
   {\raggedright\sffamily\bfseries\Large}
@@ -192,7 +194,7 @@
   }
 }
 
-\raggedbottom
+% \raggedbottom
 
 \RequirePackage{blatex}
 
