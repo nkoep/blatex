@@ -310,6 +310,8 @@
 \DeclareDocumentCommand{\TVnorm}{s m}{%
   \IfBooleanTF{#1}{\norm*{#2}}{\norm{#2}}_\mathrm{TV}%
 }
+% Nonincreasing rearrangement
+\newcommand*{\rearr}[1]{\check{#1}}
 % Absolute value
 \DeclareDocumentCommand{\abs}{s m}{\IfBooleanTF{#1}{|#2|}{\left|#2\right|}}
 % Support of a vector
