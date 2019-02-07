@@ -78,7 +78,7 @@
   \fancyfoot[LE,RO]{\thepage}
 }
 \pagestyle{fancy}
-\def\@barseparator{~~\textcolor{gray}{|}~~}
+\def\@barseparator{~~\textcolor{gray}{\textbf{|}}~~}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\@barseparator#1}}
 \renewcommand{\chaptermark}[1]{%
   \markboth{\chaptername~\thechapter\@barseparator#1}{}%
@@ -105,9 +105,8 @@
   {\sffamily\huge}
   {\filcenter\rmfamily\bfseries\fontsize{120pt}{150pt}\selectfont\thechapter}
   {6ex}
-  {\titlerule\vspace{1.5ex}\filcenter}
-  % [\vspace{1.5ex}\titlerule]
-  [\vspace{1.5ex}\titlerule\vspace{%
+  {{\titlerule[1pt]}\vspace{1.5ex}\filcenter}
+  [\vspace{1.5ex}{\titlerule[1pt]}\vspace{%
     0pt plus 0.5\baselineskip minus 0.5\baselineskip}]
 \titleformat
   {\section}
