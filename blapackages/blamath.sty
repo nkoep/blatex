@@ -426,15 +426,19 @@
 \newcommand*{\serror}[1]{\sigma_{#1}}
 % Positive part
 \newcommand*{\Pos}[1]{\brackets{#1}_+}
+% XXX: This one is redundant (cf. \negativepart above).
 % Negative part
 \newcommand*{\Neg}[1]{\brackets{#1}_-}
 % Boundary of a closed set
 \newcommand*{\boundary}{\partial}
 % Positive part
-\newcommand*{\positivepart}[1]{\brackets{#1}_+}
-% XXX: This one is redundant (cf. \Neg above).
+\NewDocumentCommand{\positivepart}{s m}{%
+  \IfBooleanTF{#1}{\brackets*{#2}}{\brackets{#2}}_+%
+}
 % Negative part
-\newcommand*{\negativepart}[1]{\brackets{#1}_-}
+\NewDocumentCommand{\negativepart}{s m}{%
+  \IfBooleanTF{#1}{\brackets*{#2}}{\brackets{#2}}_-%
+}
 % Fourier transform
 \newcommand*{\fourier}{\mathcal{F}}
 
