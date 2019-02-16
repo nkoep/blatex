@@ -354,6 +354,10 @@
 \NewDocumentCommand{\inner}{s m m}{%
   \IfBooleanTF{#1}{\langle#2,#3\rangle}{\left\langle#2,#3\right\rangle}
 }
+% Inner product on C
+\NewDocumentCommand{\innerC}{s m m}{%
+  \IfBooleanTF{#1}{\langle#2,#3\rangle}{\left\langle#2,#3\right\rangle}_\C
+}
 % Hadamard product
 \newcommand*{\hada}{\circ}
 % Diagonal matrix
