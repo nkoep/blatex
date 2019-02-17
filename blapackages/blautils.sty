@@ -58,11 +58,6 @@
 
 \newcommand*{\Phantom}[1]{\phantom{{}#1{}}}
 
-\newcommand{\phantomfootnote}[1]{%
-  \begingroup
-    \renewcommand\thefootnote{}\footnote{#1}%
-    \addtocounter{footnote}{-1}%
-  \endgroup
-}
+\def\phantomfootnote{\xdef\@thefnmark{}\@footnotetext}
 
 \endinput
