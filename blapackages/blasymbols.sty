@@ -17,9 +17,6 @@
   nolist,
   xindy,
   nomain,
-  % FIXME: indexonlyfirst doesn't seem to work properly. Using 'nonumberlist'
-  % 			 would disable all page references.
-  % nonumberlist,
   indexonlyfirst
 ]{glossaries}
 \usepackage{ltxtable}
@@ -28,9 +25,11 @@
 % Define glossary style similar to TOC.
 \newglossarystyle{bla}{%
   \setglossarystyle{long}%
-  \renewenvironment{theglossary}%
-    {\tabularx{\linewidth}{@{}l@{\extracolsep{2em}}X@{}}}%
-    {\endtabularx}%
+  \setlength{\glsdescwidth}{0.75\textwidth}
+  % XXX: This doesn't pagebreak properly.
+  % \renewenvironment{theglossary}%
+  %   {\tabularx{\textwidth}{@{}l@{\extracolsep{2em}}X@{}}}%
+  %   {\endtabularx}%
 }
 % Define variant of dotfill macro with wider dot spacing.
 \providecommand{\tocdotfill}[1]{%
@@ -40,6 +39,7 @@
 \setglossarystyle{bla}
 
 \newtoks\@symboltokens
+
 % Add a new symbol definition
 \newcommand*{\addsymbol}[2]{
   \@symboltokens=\expandafter{\the\@symboltokens #1 & #2 \\}
