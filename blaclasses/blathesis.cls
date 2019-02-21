@@ -6,9 +6,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{blathesis}[2014/05/17]
 
-\newif\if@final\@finalfalse
-\DeclareOption{final}{
-  \@finaltrue
+\newif\if@publication\@publicationfalse
+\DeclareOption{publication}{
+  \@publicationtrue
 }
 
 \DeclareOption*{
@@ -151,7 +151,7 @@
 
     \vspace{35mm}
 
-    \if@final
+    \if@publication
         Von der Fakultät für Elektrotechnik und Informationstechnik \\
         der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
         zur Erlangung des akademischen Grades eines Doktors \\
@@ -177,7 +177,7 @@
     \vspace{5mm}
     aus \AuthorBirthplace \\
 
-    \if@final
+    \if@publication
         \vspace{20mm}
         \begin{tabular}{ll}
           Berichter: & \Examiner \\
@@ -193,8 +193,6 @@
     \fi
   }
 }
-
-% \raggedbottom
 
 \RequirePackage{blatex}
 
