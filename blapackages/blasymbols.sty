@@ -12,8 +12,9 @@
   toc,
   nopostdot,
   acronym,
+  symbols,
   shortcuts,
-  nohypertypes=acronym,
+  nohypertypes={acronym,symbol},
   nolist,
   xindy,
   nomain,
@@ -21,43 +22,18 @@
 ]{glossaries}
 \usepackage{ltxtable}
 \usepackage{import}
+\usepackage{etoolbox}
 
 % Define glossary style similar to TOC.
-\newglossarystyle{bla}{%
+\newglossarystyle{blaglsstyle}{%
   \setglossarystyle{long}%
   \setlength{\glsdescwidth}{0.75\textwidth}
-  % XXX: This doesn't pagebreak properly.
-  % \renewenvironment{theglossary}%
-  %   {\tabularx{\textwidth}{@{}l@{\extracolsep{2em}}X@{}}}%
-  %   {\endtabularx}%
 }
 % Define variant of dotfill macro with wider dot spacing.
 \providecommand{\tocdotfill}[1]{%
   \leaders\hbox{$\m@th\mkern #1 mu\hbox{.}\mkern #1 mu$}\hfill%
 }
 \renewcommand*\glspostdescription{\tocdotfill{4.5}}
-\setglossarystyle{bla}
-
-\newtoks\@symboltokens
-
-% Add a new symbol definition
-\newcommand*{\addsymbol}[2]{
-  \@symboltokens=\expandafter{\the\@symboltokens #1 & #2 \\}
-}
-
-% Generate the list of symbols
-\newif\if@losdone\@losdonefalse
-\newcommand*{\listofsymbols}{
-  \if@losdone
-    \PackageError{blasymbols}{Cannot generate the List of Symbols twice}{}
-  \else
-    \chapter{List of Symbols}
-    \begin{tabularx}{\linewidth}{@{}l@{\extracolsep{2em}}X@{}}
-      \the\@symboltokens
-    \end{tabularx}
-    \@losdonetrue
-  \fi
-}
 
 % Place first use of acronym in \emph{}, see
 %   https://tex.stackexchange.com/a/232722)
@@ -99,10 +75,32 @@
   }%
 }
 
+\newcounter{@symbolcount}
+
+\renewcommand{\glsprestandardsort}[3]{%
+  \ifdefstring{#2}{symbols}{%
+    \stepcounter{@symbolcount}%
+    \edef#1{\glssortnumberfmt{\arabic{@symbolcount}}}%
+  }{%
+    \glsdosanitizesort%
+  }%
+}
+
+% Add a new symbol definition.
+\newcommand*{\addsymbol}[3]{
+  \newglossaryentry{#1}{%
+    type=symbols,
+    sort={#1},
+    name={#2},
+    description={#3}
+  }%
+}
+
 % TODO: Remove this.
 \newcommand*{\acfi}[1]{\emph{\acl{#1}} (\acs{#1})}
 
 \makeglossaries
+
 \import{../}{blacronyms}
 
 \endinput
