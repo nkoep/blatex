@@ -454,7 +454,9 @@
 \DeclareDocumentCommand{\Equation}{s m}{%
   \IfBooleanTF{#1}{\Env{align*}{#2}}{\Env{align}{#2}}%
 }
-\newcommand*{\PMatrix}[1]{\Env{pmatrix}{#1}}
+\NewDocumentCommand{\PMatrix}{s m}{%
+  \IfBooleanTF{#1}{(\Env{matrix}{#2})}{\Env{pmatrix}{#2}}%
+}
 \newcommand*{\Cases}[1]{\Env{dcases}{#1}}
 
 \ifx\thechapter\undefined
