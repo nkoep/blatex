@@ -166,13 +166,13 @@
         Der Fakultät für Elektrotechnik und Informationstechnik \\
         der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
         vorgelegte Dissertation zur Erlangung \\
-        des akademischen Grades eines Doktors \\
-        der Ingenieurwissenschaften
+        des akademischen Grades eines \\[1cm]
+
+        Doktors der Ingenieurwissenschaften
 
         \vspace{25mm}
     \fi
 
-    \AuthorDegree \\
     \@author \\
     \vspace{5mm}
     aus \AuthorBirthplace \\
