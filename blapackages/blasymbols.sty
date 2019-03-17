@@ -96,6 +96,12 @@
   }%
 }
 
+\newcounter{blasymbols@sentinelcounter}
+\newcommand*{\addsentinel}{
+  \addsymbol{sentinel\theblasymbols@sentinelcounter}{}{}
+  \stepcounter{blasymbols@sentinelcounter}
+}
+
 % TODO: Remove this.
 \newcommand*{\acfi}[1]{\emph{\acl{#1}} (\acs{#1})}
 
