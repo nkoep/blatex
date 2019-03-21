@@ -27,24 +27,25 @@
 \usepackage{fix-cm}
 \usepackage{microtype}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{hyperref}
 
-% Configure the hyperref package.
-\def\@linkcolor{NavyBlue}
-\hypersetup{
-  final,
-  linktocpage=true,
-  colorlinks=true,
-  linkcolor=\@linkcolor,
-  citecolor=\@linkcolor,
-  filecolor=\@linkcolor,
-  urlcolor=\@linkcolor
-}
+% Miscellaneous packages
+\usepackage{units}        % Properly formatted units
+\usepackage{gensymb}      % Degree symbol
+\usepackage{textcomp}     % Only loaded to make gensymb shut up...
+\usepackage{graphicx}     % Provides the subfig environment
+\usepackage[labelfont=bf,font={small,sf}]{caption}
+\usepackage{subcaption}
+\usepackage{csquotes}     % Provides \enquote{} command to quote text
+\usepackage{float}        % Adds option "h" to place floats where they are used
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{tikzscale}
 
 % Page layout
 \usepackage[
   left=2.75cm,
   right=2.75cm,
+  bindingoffset=0.75cm,
   top=3.5cm,
   headsep=0.75cm,
   bottom=3.75cm,
@@ -140,6 +141,20 @@
 \renewcommand{\listoffigures}{
   \addcontentsline{toc}{chapter}{\listfigurename}
   \@listoffigures
+}
+
+\usepackage{hyperref}
+
+% Configure the hyperref package.
+\def\@linkcolor{NavyBlue}
+\hypersetup{
+  final,
+  linktocpage=true,
+  colorlinks=true,
+  linkcolor=\@linkcolor,
+  citecolor=\@linkcolor,
+  filecolor=\@linkcolor,
+  urlcolor=\@linkcolor
 }
 
 \renewcommand{\maketitle}{
