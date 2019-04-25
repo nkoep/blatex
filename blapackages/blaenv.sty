@@ -6,21 +6,27 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{blaenv}[2015/03/18 v0.1]
 
+\newif\if@enumitem\@enumitemtrue
+\DeclareOption{noenumitem}{
+  \@enumitemfalse
+}
+
 \ProcessOptions\relax
 
 % AMS theorem configuration
 \usepackage{amsthm}
 \usepackage{etoolbox}
-\usepackage[inline]{enumitem}
+\if@enumitem
+  \usepackage[inline]{enumitem}
+
+  \newlist{renumerate}{enumerate}{1}
+  \setlist[renumerate]{label=(\roman*)}
+
+  \newlist{enumi*}{enumerate*}{1}
+  \setlist[enumi*]{label=\textit{\roman*})}
+\fi
 
 \usepackage{blautils}
-
-\newlist{renumerate}{enumerate}{1}
-\setlist[renumerate]{label=(\roman*)}
-
-\newlist{enumi*}{enumerate*}{1}
-\setlist[enumi*]{label=\textit{\roman*})}
-
 \usepackage{blaref}
 
 \ifx\thechapter\undefined
