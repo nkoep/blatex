@@ -146,7 +146,11 @@
 \usepackage{hyperref}
 
 % Configure the hyperref package.
-\def\@linkcolor{NavyBlue}
+\if@publication
+  \def\@linkcolor{LimeGreen}
+\else
+  \def\@linkcolor{NavyBlue}
+\fi
 \hypersetup{
   final,
   linktocpage=true,
