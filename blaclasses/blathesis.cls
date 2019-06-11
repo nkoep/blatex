@@ -59,7 +59,8 @@
   backend=biber,
   style=alphabetic,
   sorting=nyt,
-  maxbibnames=10
+  maxbibnames=10,
+  giveninits=true
 ]{biblatex}
 \DefineBibliographyStrings{english}{
   bibliography = {References}
