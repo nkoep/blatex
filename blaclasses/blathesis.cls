@@ -60,7 +60,10 @@
   style=alphabetic,
   sorting=nyt,
   maxbibnames=10,
-  giveninits=true
+  giveninits=true,
+  doi=false,
+  url=false,
+  % isbn=false
 ]{biblatex}
 \DefineBibliographyStrings{english}{
   bibliography = {References}
