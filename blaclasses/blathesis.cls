@@ -50,7 +50,6 @@
   headsep=0.75cm,
   bottom=3.75cm,
   footskip=1.25cm,
-  headheight=48pt,
   heightrounded
 ]{geometry}
 
