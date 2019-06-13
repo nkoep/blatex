@@ -17,7 +17,7 @@
 
 \ProcessOptions\relax
 
-\LoadClass[11pt,a4paper,dvipsnames,twoside]{book}
+\LoadClass[12pt,a4paper,dvipsnames,twoside]{book}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
