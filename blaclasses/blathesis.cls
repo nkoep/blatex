@@ -43,13 +43,10 @@
 
 % Page layout
 \usepackage[
-  left=2.75cm,
-  right=2.75cm,
-  bindingoffset=0.75cm,
-  top=3.5cm,
-  headsep=0.75cm,
-  bottom=3.75cm,
-  footskip=1.25cm,
+  includehead,
+  includefoot,
+  bindingoffset=0.5cm,
+  margin=2.25cm,
   heightrounded
 ]{geometry}
 
@@ -148,11 +145,7 @@
 \usepackage{hyperref}
 
 % Configure the hyperref package.
-\if@publication
-  \def\@linkcolor{LimeGreen}
-\else
-  \def\@linkcolor{NavyBlue}
-\fi
+\def\@linkcolor{NavyBlue}
 \hypersetup{
   final,
   linktocpage=true,
