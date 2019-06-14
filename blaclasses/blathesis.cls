@@ -61,8 +61,7 @@
   maxbibnames=10,
   giveninits=true,
   doi=false,
-  url=false,
-  % isbn=false
+  url=false
 ]{biblatex}
 \DefineBibliographyStrings{english}{
   bibliography = {References}
