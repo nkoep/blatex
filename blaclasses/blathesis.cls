@@ -40,6 +40,8 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \usepackage{tikzscale}
+\usepackage{etoolbox}
+\usepackage{emptypage}
 
 % Page layout
 \usepackage[
@@ -54,7 +56,6 @@
 \usepackage[
   backend=biber,
   style=alphabetic,
-  sorting=nyt,
   maxbibnames=10,
   giveninits=true,
   doi=false,
@@ -86,20 +87,17 @@
 }
 
 % Start chapters on odd pages and make sure the preceeding page is empty.
-\newcommand*{\clearemptydoublepage}{%
-  \clearpage%
-  \thispagestyle{empty}%
-  \cleardoublepage%
-}
-\renewcommand{\chapter}{%
-  \clearemptydoublepage       % Starts new page.
-  \thispagestyle{empty}       % Page style of chapter page is 'plain'
-  \global\@topnum\z@          % Prevents figures from going at top of page
-  \@afterindentfalse          % Suppresses indent in first paragraph
-  \secdef\@chapter\@schapter%
-}
+% \renewcommand{\chapter}{%
+%   \cleardoublepage%
+%   \thispagestyle{empty}       % Page style of chapter page is 'plain'
+%   \global\@topnum\z@          % Prevents figures from going at top of page
+%   \@afterindentfalse          % Suppresses indent in first paragraph
+%   \secdef\@chapter\@schapter%
+% }
+\patchcmd{\chapter}{plain}{empty}{}{}
+\patchcmd{\part}{plain}{empty}{}{}
 
-\usepackage{titlesec}
+\usepackage[clearempty]{titlesec}
 \titleformat
   {\chapter}
   [display]
