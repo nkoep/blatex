@@ -156,11 +156,11 @@
 
         Doktors der Ingenieurwissenschaften \\[1cm]
 
-        genehmigte Dissertation
+        genehmigte Dissertation%
 
         \vspace{2cm}
 
-        vorgelegt von
+        vorgelegt von%
         \vspace{0.5cm}
     \else
         % Statement for submission version
@@ -169,7 +169,7 @@
         vorgelegte Dissertation zur Erlangung \\
         des akademischen Grades eines \\[1cm]
 
-        Doktors der Ingenieurwissenschaften
+        Doktors der Ingenieurwissenschaften%
 
         \vspace{2.5cm}
     \fi
@@ -182,15 +182,15 @@
         \vspace{2cm}
         \begin{tabular}{ll}
           Berichter: & \Examiner \\
-                     & \SecondExaminer
+                     & \SecondExaminer%
         \end{tabular}
         \vspace{2cm}
 
-        Tag der mündlichen Prüfung: \ExaminationDate
+        Tag der mündlichen Prüfung: \ExaminationDate%
 
         \vspace*{\fill}
         Diese Dissertation ist auf den Internetseiten \\
-        der Hochschulbibliothek online verfügbar.
+        der Universitätsbibliothek online verfügbar.%
     \fi
   }
 }
