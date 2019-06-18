@@ -47,7 +47,8 @@
   includefoot,
   bindingoffset=0.5cm,
   margin=2.25cm,
-  heightrounded
+  heightrounded,
+  headheight=14pt
 ]{geometry}
 
 % Define bibliography style.
