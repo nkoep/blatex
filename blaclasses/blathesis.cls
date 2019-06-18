@@ -25,7 +25,6 @@
 \usepackage[babel=true]{microtype}
 \usepackage{lmodern}
 \usepackage{fix-cm}
-\usepackage{microtype}
 \usepackage[dvipsnames]{xcolor}
 
 % Miscellaneous packages
