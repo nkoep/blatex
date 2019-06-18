@@ -6,14 +6,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{bladraft}[2015/03/18 v0.1]
 
-\usepackage[pagewise,switch*]{lineno}
-\usepackage[excludeor]{everyhook}
-\usepackage{marginnote}
 \usepackage{todonotes}
 
 \ProcessOptions\relax
 
-\DeclareDocumentCommand{\@blanote}{m m o +m}{
+\DeclareDocumentCommand{\@blanote}{m m o +m}{%
   \ifblatex@draft%
     \tikzexternaldisable%
     \todo[inline,color=#1!40,size=\small,caption={}]{%
