@@ -41,7 +41,6 @@
 \usepackage{pgfplotstable}
 \usepackage{tikzscale}
 \usepackage{etoolbox}
-\usepackage{emptypage}
 
 % Page layout
 \usepackage[
@@ -126,20 +125,7 @@
   {1em}
   {}
 
-% Redefine the \listoftables macro so that it adds a TOC entry as well
-\let\@listoftables\listoftables
-\renewcommand{\listoftables}{
-  \addcontentsline{toc}{chapter}{\listtablename}
-  \@listoftables
-}
-
-% Redefine the \listoffigures macro so that it adds a TOC entry as well
-\let\@listoffigures\listoffigures
-\renewcommand{\listoffigures}{
-  \addcontentsline{toc}{chapter}{\listfigurename}
-  \@listoffigures
-}
-
+\usepackage[nottoc]{tocbibind}
 \usepackage{hyperref}
 
 % Configure the hyperref package.
