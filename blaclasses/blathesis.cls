@@ -79,7 +79,7 @@
   \fancyfoot[LE,RO]{\small\thepage}
 }
 \pagestyle{fancy}
-\def\@barseparator{~~\textcolor{gray}{\textbf{|}}~~}
+\def\@barseparator{~~\textcolor{gray}{\upshape\textbf{|}}~~}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\@barseparator#1}}
 \renewcommand{\chaptermark}[1]{%
   \markboth{\chaptername~\thechapter\@barseparator#1}{}%
