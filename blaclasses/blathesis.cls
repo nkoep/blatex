@@ -85,14 +85,6 @@
   \markboth{\chaptername~\thechapter\@barseparator#1}{}%
 }
 
-% Start chapters on odd pages and make sure the preceeding page is empty.
-% \renewcommand{\chapter}{%
-%   \cleardoublepage%
-%   \thispagestyle{empty}       % Page style of chapter page is 'plain'
-%   \global\@topnum\z@          % Prevents figures from going at top of page
-%   \@afterindentfalse          % Suppresses indent in first paragraph
-%   \secdef\@chapter\@schapter%
-% }
 \patchcmd{\chapter}{plain}{empty}{}{}
 \patchcmd{\part}{plain}{empty}{}{}
 
