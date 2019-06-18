@@ -92,8 +92,30 @@
     type=symbols,
     sort={#1},
     name={#2},
-    description={#3}
+    description={#3},
+    nonumberlist
   }%
+}
+
+\newcommand*{\listofabbreviations}{
+  \printglossary[
+    title={List of Abbreviations},
+    style=blaglsstyle,
+    type=acronym
+  ]
+}
+
+\newcommand*{\listofsymbols}{%
+  \glsaddall[types=symbols]
+  \begingroup
+  \renewcommand*{\arraystretch}{1.25}
+  \printglossary[
+    title={List of Symbols},
+    style=blaglsstyle,
+    type=symbols,
+    nonumberlist
+  ]
+  \endgroup
 }
 
 \newcounter{blasymbols@sentinelcounter}
