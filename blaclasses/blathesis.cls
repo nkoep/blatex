@@ -74,9 +74,9 @@
 \fancypagestyle{blathesis}{
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
-  \fancyhead[RO]{\selectfont\scshape\nouppercase{\rightmark}}
-  \fancyhead[LE]{\selectfont\scshape\nouppercase{\leftmark}}
-  \fancyfoot[LE,RO]{\thepage}
+  \fancyhead[RO]{\small\selectfont\scshape\nouppercase{\rightmark}}
+  \fancyhead[LE]{\small\selectfont\scshape\nouppercase{\leftmark}}
+  \fancyfoot[LE,RO]{\small\thepage}
 }
 \pagestyle{fancy}
 \def\@barseparator{~~\textcolor{gray}{\textbf{|}}~~}
