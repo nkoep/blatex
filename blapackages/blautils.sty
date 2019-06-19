@@ -53,11 +53,17 @@
 \newcommand*{\rhs}{r.h.s.\xspace}
 \newcommand*{\qtext}[1]{\quad\text{#1}\quad}
 
-% Force tagged equation in starred environments which normally suppress tags.
+% Force tagged equation in starred environments, which normally suppress tags.
 \newcommand*{\blatag}{\addtocounter{equation}{1}\tag{\theequation}}
 
 \newcommand*{\Phantom}[1]{\phantom{{}#1{}}}
 
-\def\phantomfootnote{\xdef\@thefnmark{}\@footnotetext}
+% A footnote without a label.
+\newcommand*{\phantomfootnote}[1]{%
+  \begingroup%
+    \renewcommand\thefootnote{}\footnote{#1}%
+    \addtocounter{footnote}{-1}%
+  \endgroup%
+}
 
 \endinput
