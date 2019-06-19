@@ -27,7 +27,7 @@
 % Define glossary style similar to TOC.
 \newglossarystyle{blaglsstyle}{%
   \setglossarystyle{long}%
-  \setlength{\glsdescwidth}{0.75\textwidth}
+  \setlength{\glsdescwidth}{0.8\textwidth}
 }
 % Define variant of dotfill macro with wider dot spacing.
 \providecommand{\tocdotfill}[1]{%
@@ -108,7 +108,6 @@
 \newcommand*{\listofsymbols}{%
   \glsaddall[types=symbols]
   \begingroup
-  \renewcommand*{\arraystretch}{1.25}
   \printglossary[
     title={List of Symbols},
     style=blaglsstyle,
