@@ -6,9 +6,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{blathesis}[2014/05/17]
 
-\newif\if@publication\@publicationfalse
+\newif\ifpublication\publicationfalse
 \DeclareOption{publication}{
-  \@publicationtrue
+  \publicationtrue
 }
 
 \DeclareOption*{
@@ -141,7 +141,7 @@
 
     \vspace{3cm}
 
-    \if@publication
+    \ifpublication
         Von der Fakultät für Elektrotechnik und Informationstechnik \\
         der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
         zur Erlangung des akademischen Grades eines \\[1cm]
@@ -170,7 +170,7 @@
     \vspace{5mm}
     aus \AuthorBirthplace \\
 
-    \if@publication
+    \ifpublication
         \vspace{2cm}
         \begin{tabular}{ll}
           Berichter: & \Examiner \\
