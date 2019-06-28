@@ -45,8 +45,9 @@
 \usepackage[
   includehead,
   includefoot,
-  bindingoffset=0.5cm,
-  margin=2.25cm,
+  bindingoffset=0.75cm,
+  margin=2cm,
+  top=1.75cm,
   heightrounded,
   headheight=14pt
 ]{geometry}
