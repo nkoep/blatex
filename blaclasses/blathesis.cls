@@ -11,6 +11,11 @@
   \publicationtrue
 }
 
+\newif\ifprint\printfalse
+\DeclareOption{print}{
+  \printtrue
+}
+
 \DeclareOption*{
   \PassOptionsToPackage{\CurrentOption}{blatex}
 }
@@ -42,12 +47,20 @@
 \usepackage{etoolbox}
 
 % Page layout
+\ifprint
+  \def\@BindingOffset{0.75cm}
+  \def\@Margin{2cm}
+\else
+  \def\@BindingOffset{0cm}
+  \def\@Margin{2.375cm}
+\fi
 \usepackage[
   includehead,
   includefoot,
-  bindingoffset=0.75cm,
-  margin=2cm,
+  bindingoffset=\@BindingOffset,
+  margin=\@Margin,
   top=1.75cm,
+  bottom=2cm,
   heightrounded,
   headheight=14pt
 ]{geometry}
@@ -122,16 +135,20 @@
 \usepackage{hyperref}
 
 % Configure the hyperref package.
-\def\@linkcolor{NavyBlue}
-\hypersetup{
-  final,
-  linktocpage=true,
-  colorlinks=true,
-  linkcolor=\@linkcolor,
-  citecolor=\@linkcolor,
-  filecolor=\@linkcolor,
-  urlcolor=\@linkcolor
-}
+\ifprint
+  \hypersetup{hidelinks}
+\else
+  \def\@linkcolor{NavyBlue}
+  \hypersetup{
+    final,
+    linktocpage=true,
+    colorlinks=true,
+    linkcolor=\@linkcolor,
+    citecolor=\@linkcolor,
+    filecolor=\@linkcolor,
+    urlcolor=\@linkcolor
+  }
+\fi
 
 \renewcommand{\maketitle}{
   \title{\Title}
