@@ -160,28 +160,28 @@
     \vspace{3cm}
 
     \ifpublication
-        Von der Fakultät für Elektrotechnik und Informationstechnik \\
-        der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
-        zur Erlangung des akademischen Grades eines \\[1cm]
+      Von der Fakultät für Elektrotechnik und Informationstechnik \\
+      der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
+      zur Erlangung des akademischen Grades eines \\[1cm]
 
-        Doktors der Ingenieurwissenschaften \\[1cm]
+      Doktors der Ingenieurwissenschaften \\[1cm]
 
-        genehmigte Dissertation%
+      genehmigte Dissertation%
 
-        \vspace{2cm}
+      \vspace{2cm}
 
-        vorgelegt von%
-        \vspace{0.5cm}
+      vorgelegt von%
+      \vspace{0.5cm}
     \else
-        % Statement for submission version
-        Der Fakultät für Elektrotechnik und Informationstechnik \\
-        der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
-        vorgelegte Dissertation zur Erlangung \\
-        des akademischen Grades eines \\[1cm]
+      % Statement for submission version
+      Der Fakultät für Elektrotechnik und Informationstechnik \\
+      der Rheinisch-Westfälischen Technischen Hochschule Aachen \\
+      vorgelegte Dissertation zur Erlangung \\
+      des akademischen Grades eines \\[1cm]
 
-        Doktors der Ingenieurwissenschaften%
+      Doktors der Ingenieurwissenschaften%
 
-        \vspace{2.5cm}
+      \vspace{2.5cm}
     \fi
 
     \@author \\
@@ -189,18 +189,18 @@
     aus \AuthorBirthplace \\
 
     \ifpublication
-        \vspace{2cm}
-        \begin{tabular}{ll}
-          Berichter: & \Examiner \\
-                     & \SecondExaminer%
-        \end{tabular}
-        \vspace{2cm}
+      \vspace{2cm}
+      \begin{tabular}{ll}
+        Berichter: & \Examiner \\
+                   & \SecondExaminer%
+      \end{tabular}
+      \vspace{2cm}
 
-        Tag der mündlichen Prüfung: \ExaminationDate%
+      Tag der mündlichen Prüfung: \ExaminationDate%
 
-        \vspace*{\fill}
-        Diese Dissertation ist auf den Internetseiten \\
-        der Universitätsbibliothek online verfügbar.%
+      \vspace*{\fill}
+      Diese Dissertation ist auf den Internetseiten \\
+      der Universitätsbibliothek online verfügbar.%
     \fi
   }
 }
