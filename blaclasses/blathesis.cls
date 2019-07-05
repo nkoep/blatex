@@ -48,11 +48,11 @@
 
 % Page layout
 \ifprint
-  \def\@BindingOffset{0.75cm}
+  \def\@BindingOffset{1cm}
   \def\@Margin{2cm}
 \else
   \def\@BindingOffset{0cm}
-  \def\@Margin{2.375cm}
+  \def\@Margin{2.5cm}
 \fi
 \usepackage[
   includehead,
